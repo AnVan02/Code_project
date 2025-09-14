@@ -1,0 +1,28 @@
+<% include header.ejs %>
+
+    <table class="table table-bordered">
+        <tr><th>Tên nv</th><th>Tuổi nv</th></tr>
+        <% dsnv.forEach(nv =>{%>
+        <tr>
+            <td><%=nv.name %></td>
+            <td><%=nv.age %></td>
+            <td>
+            
+                <a href="" type="buton" class="btn btn-danger">Sửa</a>
+                <a onclick="hoitruockhixoa('<%=nv._id%>') " type="buton" class="btn btn-warning">Xoá</a>
+            </td>
+        </tr>
+        <% }); %>
+        
+
+    </table>
+    <script>
+        function hoitruockhixoa(id){
+            var dongy=confirm('Xoá nhân viên nhé! ?')
+            if(dongy)
+                window.location='/xoa/'+id
+        }
+    </script>
+</div>
+
+<% include footer.ejs %>

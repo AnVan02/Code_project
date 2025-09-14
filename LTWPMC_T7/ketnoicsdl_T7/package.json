@@ -1,0 +1,15 @@
+{
+  "name": "ketnoicsdl_T7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "xoadulieu.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.10.0"
+  }
+}

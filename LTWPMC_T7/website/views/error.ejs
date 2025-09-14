@@ -1,0 +1,15 @@
+<% include header.ejs%>
+
+<h1>
+     <%= err.message % >
+</h1>
+
+<h2>
+     <%= err.status %>
+</h2>
+
+<pre>
+     <%= error.stack %>
+</pre>
+
+<% include footer.ejs %>

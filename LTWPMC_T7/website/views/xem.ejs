@@ -1,0 +1,41 @@
+<% include header.ejs %>
+
+<table class="table table-bordered">
+    <tr><th>Tên nv</th><th>Tuổi nv</th></tr>
+    <% dsnv.forEach(nv =>{%>
+    <tr>
+        <td><%=nv.name %></td>
+        <td><%=nv.age %></td>
+        <td>
+        
+            <a href="" type="buton" class="btn btn-danger">Sửa</a>
+            <a onclick="hoitruockhixoa('<%=nv._id%>') " type="buton" class="btn btn-warning">Xoá</a>
+        </td>
+    </tr>
+    <% }); %>
+    
+
+</table>
+    <script>
+        function hoitruockhixoa(id) {
+        Swal.fire({
+        title: 'Bạn có muốn xoá không?',
+        text: "Đừng hối hận nhé!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Vâng , xoá đi',
+        cancelButtonText:'không, đừng xoá'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire('Deleted!','Nhân viên đã bị đuổi.','success')
+            .then (()=> {
+                window.location= '/xoa/' + id
+            })
+         }
+        })
+    }
+    
+    </script>
+<% include footer.ejs %>

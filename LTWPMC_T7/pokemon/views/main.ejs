@@ -1,0 +1,67 @@
+<div class="main container">
+     <div class="row pt-5 d-flex justify-content-around flex-wrap gap-1 mb-4">
+          <% for (let i=0; i< Pokemons.length;i++){%>
+               <div class="col-3 card my-3">
+                    <div class="card-header text-center">
+                         <h3 class="text-danger">
+                              <%= Pokemons[i].name.english%>
+                         </h3>
+                    </div>
+                    <div class="card-body">
+                         <img src="/images/00<%=i+1 %>.png"alt="">
+                         <div class="row">
+                              <div class="col-6">
+                                   <p>
+                                        HP:<%=Pokemons[i].base.HP %>
+                                   </p>
+                                   <p>
+                                        Attack:<%=Pokemons[i].base.Attack %>
+                                   </p>
+                                   <p>
+                                        Defense:<%=Pokemons[i].base.Defense %>
+                                   </p>
+                              </div>
+                              <div class="col-6">
+                                   <p>
+                                        Speed:<%=Pokemons[i].base.Speed %>
+                                   </p>
+                                   <p>
+                                        Sp.Attack:<%=Pokemons[i].base.['Sp.Attack'] %>
+                                   </p>
+                                   <p>
+                                        Sp.Defense:<%=Pokemons[i].base.['Sp.Defense ']%>
+                                   </p>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="card-footer text-center">
+                    <% for (let j=0; j<Pokemon [i].type.lenth;j++){%>
+                         <% switch(Pokemons[i].type[j]){case 'file':%>
+                    <button class="btn %<btn-warning %>">
+                         <%= Pokemons [i].type[j] %>
+                    </button>
+                    <% break ; case 'Water': %>
+                    <button class="btn %<btn-info%>">
+                         <%=Pokemons[i].type[j]%>
+                    </button>
+                    <% break; case 'Grass':%>
+                    <button class="btn %<btn-success%>">
+                         <%=Pokemons[i].type[j]%>
+                         
+                    </button>
+                    <% break; default :%>
+                    <button class="btn %<btn-secondary %>">
+                         <%= Pokemons[i].type[j]%>
+                    </button>
+                    <% break; } %>
+
+                         <% } %>
+
+
+               </div>
+          </div>
+          <% } %>
+     </div>
+
+</div>
