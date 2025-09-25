@@ -1,0 +1,612 @@
+  body {
+      font-family: 'Montserrat';
+      height: 100vh;
+
+  }
+
+
+  /* Container riêng cho các section (không ảnh hưởng header) */
+  .page-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+
+  /* Hero Section */
+  /* Hero Section */
+  .hero {
+      position: relative;
+      width: 100%;
+      height: 63vh;
+      overflow: hidden;
+  }
+
+  .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4);
+      /* làm tối nền để chữ sáng */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+  }
+
+  .hero-text {
+      position: relative;
+      color: white;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 20vh;
+  }
+
+  .hero-text h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+  }
+
+  .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+  }
+
+  /* Buttons */
+  .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+  }
+
+  .btn-primary {
+      background: #2563eb;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+  }
+
+  .btn-primary:hover {
+      background: #1e40af;
+  }
+
+  .btn-secondary {
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+  }
+
+  .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Search box */
+  .hero-search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      max-width: 500px;
+      margin: 0 auto;
+  }
+
+  .hero-search input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+  }
+
+  .hero-search button {
+      background: #2563eb;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      padding: 0 16px;
+      cursor: pointer;
+  }
+
+  .btn-primary {
+      background: #0048CC;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+
+  .btn-secondary {
+      /* background: white;
+      color: #333; */
+      padding: 1rem 2rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+
+  .hero-search {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+  }
+
+  .hero-search input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+  }
+
+  .hero-search button {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #333;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+  }
+
+  /* Featured Products */
+  .featured-products {
+      padding: 4rem 0;
+      background: white;
+  }
+
+  .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 3rem;
+  }
+
+  .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+  }
+
+  .product-card {
+      background: #f8f9fa;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 300px;
+      position: relative;
+  }
+
+  .product-image {
+      height: 200px;
+      background: #e9ecef;
+  }
+
+  .product-info {
+      padding: 1rem;
+      background: #dee2e6;
+      height: 100px;
+  }
+
+  /* logo thương hiêu */
+
+  .logo-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+  }
+
+  .logo-container img {
+      max-width: 120px;
+      max-height: 60px;
+      object-fit: contain;
+  }
+
+  /* tim kiêm */
+  /* Newsletter Section */
+  .newsletter-section {
+      background: #f8f9fa;
+      padding: 60px 20px;
+      text-align: center;
+  }
+
+  .newsletter-section h3 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+  }
+
+  .newsletter-section p {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 20px;
+  }
+
+  .newsletter-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .newsletter-form input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+  }
+
+  .newsletter-form button {
+      background: #171717;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+  }
+
+  .newsletter-form button:hover {
+      background: #1e40af;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 600px) {
+      .newsletter-form {
+          flex-direction: column;
+      }
+
+      .newsletter-form input {
+          width: 100%;
+          border-bottom: 1px solid #eee;
+      }
+
+      .newsletter-form button {
+          width: 100%;
+      }
+  }
+
+
+
+
+  /* Benefits Section */
+  .benefits {
+      padding: 4rem 0;
+      background: #f8f9fa;
+  }
+
+  .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+  }
+
+  .benefit-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .benefit-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+  }
+
+  .benefit-card h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 1rem;
+  }
+
+  .benefit-card p {
+      color: #666;
+      font-size: 0.9rem;
+  }
+
+  /* Target Sections */
+  .target-sections {
+      padding: 4rem 0;
+      background: white;
+  }
+
+  .target-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+  }
+
+  .target-card {
+      background: #f8f9fa;
+      padding: 3rem;
+      border-radius: 12px;
+  }
+
+  .target-card h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+  }
+
+  .target-icon {
+      font-size: 2rem;
+  }
+
+  .benefit-list {
+      list-style: none;
+  }
+
+  .benefit-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+  }
+
+  .checkmark {
+      color: #28a745;
+      font-weight: bold;
+  }
+
+  /* Trust Section */
+  .trust {
+      padding: 4rem 0;
+      background: #f8f9fa;
+      text-align: center;
+  }
+
+  .trust h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 1rem;
+  }
+
+  .trust p {
+      font-size: 1.2rem;
+      color: #666;
+  }
+
+  /* Testimonials */
+  .testimonials {
+      padding: 4rem 0;
+      background: white;
+  }
+
+  .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+  }
+
+  .testimonial-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+  }
+
+  .testimonial-avatar {
+      width: 60px;
+      height: 60px;
+      background: #e9ecef;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+  }
+
+  .testimonial-text {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 1rem;
+  }
+
+  .testimonial-name {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.5rem;
+  }
+
+  .testimonial-role {
+      color: #666;
+      font-size: 0.9rem;
+  }
+
+  /* logo các thương hiệu  */
+
+  /* ==== logo ===== */
+
+  /* Đảm bảo section logo hiển thị đúng */
+  .logo-section {
+      padding: 60px 0;
+      background-color: #fff;
+      width: 100%;
+      clear: both;
+  }
+
+  .logo-section .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+  }
+
+  .logo-section .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+  }
+
+  .logo-section .section-title h3 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+  }
+
+  .section-title-border {
+      /* display: inline-block; */
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(45deg, #A60606, #7F3131);
+      border-radius: 2px;
+  }
+
+  /* Owl Carousel Container */
+  .logo-container {
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+  }
+
+  #owl-brands-slider {
+      width: 100%;
+  }
+
+  /* Logo Items */
+  #owl-brands-slider .item {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: transparent;
+      /* bỏ nền */
+      border-radius: 0;
+      /* bỏ bo góc */
+      box-shadow: none;
+      /* bỏ đổ bóng */
+      margin: 10px 5px;
+      transition: all 0.3s ease;
+      height: 120px;
+      width: auto;
+  }
+
+  #owl-brands-slider .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  #owl-brands-slider .item a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+  }
+
+  #owl-brands-slider .item {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: transparent;
+      /* nền trong suốt */
+      border-radius: 0;
+      /* bỏ bo góc */
+      box-shadow: none;
+      /* bỏ đổ bóng */
+      margin: 10px 5px;
+      transition: transform 0.3s ease;
+      height: 120px;
+      width: auto;
+  }
+
+  #owl-brands-slider .item:hover {
+      transform: translateY(-5px);
+      box-shadow: none;
+      /* hover cũng không có bóng */
+      background: transparent;
+      /* hover cũng trong suốt */
+  }
+
+
+  /* Owl Carousel Controls (ẩn vì không cần) */
+  .owl-carousel .owl-nav,
+  .owl-carousel .owl-dots {
+      display: none !important;
+  }
+
+  /* Force show carousel items */
+  .owl-carousel .owl-stage-outer {
+      overflow: visible;
+  }
+
+
+  .logo-container img {
+      max-width: 100px;
+      /* Giới hạn chiều rộng tối đa */
+      max-height: 60px;
+      /* Giới hạn chiều cao tối đa */
+      object-fit: contain;
+      /* Giữ tỉ lệ ảnh, không méo */
+      margin: auto;
+      display: block;
+      transition: transform 0.3s ease;
+  }
+
+  .logo-container img:hover {
+      transform: scale(1.1);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+      .hero h1 {
+          font-size: 2rem;
+      }
+
+      .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .products-grid,
+      .benefits-grid,
+      .target-grid,
+      .testimonials-grid {
+          grid-template-columns: 1fr;
+      }
+  }

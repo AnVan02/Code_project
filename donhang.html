@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/donhang.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <script src="static/js/donhang.js"></script>
+
+    <title>AI Bán Sỉ - Hồ sơ cá nhân</title>
+</head>
+
+<body>
+    <!-- <header class="header">
+        <div class="header-logo">
+            AI Bán Sỉ
+        </div>
+        <nav>
+            <ul class="header-nav-menu">
+                <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+                    <img width="30" height="30" style="margin-right:360px;" src="static/image/circle-arrow-right.png"
+                        alt="back--v1" />
+                </div>
+                <li><a href="index.html">Sản phẩm</a></li>
+                <li><a href="chatbot.html">AI Find</a></li>
+                <li><a href="#">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="cart.html">Đơn hàng</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="header-search">
+                <span class="header-search-icon">🔍</span>
+                <input type="text" class="header-search-input" placeholder="Tìm kiếm">
+            </div>
+            <div class="header-cart">
+                <img src="static/image/Bag.png" alt="Giỏ hàng" width="24">
+            </div>
+        </div>
+         Nút menu mobile -->
+    <!-- <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+        <img width="30" height="30" src="static/image/circle-arrow-left.png" alt="back--v1" />
+    </div> -->
+
+
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>📊 TỔNG QUAN</h2>
+            <nav>
+                <div class="nav-item active" onclick="showSection('overview')">
+
+                    Sản phẩm của tôi
+                </div>
+                <div class="nav-item" onclick="showSection('orders')">
+
+                    Đơn hàng
+                </div>
+                <div class="nav-item" onclick="showSection('reports')">
+
+                    Báo cáo & Thống kê
+                </div>
+                <div class="nav-item" onclick="showSection('settings')">
+
+                    Cài đặt tài khoản
+                </div>
+            </nav>
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Dashboard Quản Lý Kho</h1>
+                <p>Tổng quan hoạt động kinh doanh</p>
+            </header>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Sản phẩm</span>
+                        <span class="stat-icon"></span>
+                    </div>
+                    <div class="stat-value">247</div>
+                </div>
+
+                <div class="stat-card success">
+                    <div class="stat-header">
+                        <span class="stat-title">Đơn hàng</span>
+                        <span class="stat-icon"></span>
+                    </div>
+                    <div class="stat-value">23</div>
+                </div>
+
+                <div class="stat-card warning">
+                    <div class="stat-header">
+                        <span class="stat-title">Kho sắp hết hàng</span>
+                        <span class="stat-icon"></span>
+                    </div>
+                    <div class="stat-value">8</div>
+                </div>
+
+                <div class="stat-card success">
+                    <div class="stat-header">
+                        <span class="stat-title">Tỷ lệ chốt</span>
+                        <span class="stat-icon"></span>
+                    </div>
+                    <div class="stat-value">82%</div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Best Selling Products -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Sản phẩm bán chạy</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="product-list">
+                            <li class="product-item">
+                                <div class="product-info">
+                                    <div class="product-name">Máy in laser HP 107A</div>
+                                    <div class="product-id">#DH200500 - Công ty TNHH ABC</div>
+                                </div>
+                                <div class="product-stats">
+                                    <div class="product-sold">166 bán</div>
+                                    <div class="product-revenue">4.680.000₫</div>
+                                </div>
+                            </li>
+                            <li class="product-item">
+                                <div class="product-info">
+                                    <div class="product-name">USB Kingston 32GB</div>
+                                    <div class="product-id">#DH200507 - Công ty XYZ Ltd</div>
+                                </div>
+                                <div class="product-stats">
+                                    <div class="product-sold">89 bán</div>
+                                    <div class="product-revenue">2.670.000₫</div>
+                                </div>
+                            </li>
+                            <li class="product-item">
+                                <div class="product-info">
+                                    <div class="product-name">ROSA </div>
+                                    <div class="product-id">#DH200503 - Doanh nghiệp DEF</div>
+                                </div>
+
+                                <div class="product-stats">
+                                    <div class="product-sold">67 bán</div>
+                                    <div class="product-revenue">8.040.000₫</div>
+                                </div>
+                            </li>
+                            <li class="product-item">
+                                <div class="product-info">
+                                    <div class="product-name">Bàn phím ROSA</div>
+                                    <div class="product-id">#DH200504 - Công ty DEF Corp</div>
+                                </div>
+                                <div class="product-stats">
+                                    <div class="product-sold">45 bán</div>
+                                    <div class="product-revenue">3.150.000₫</div>
+                                </div>
+                            </li>
+                            <li class="product-item">
+                                <div class="product-info">
+                                    <div class="product-name">Chuột gaming Razer</div>
+                                    <div class="product-id">#DH200505 - Doanh nghiệp XYZ</div>
+                                </div>
+                                <div class="product-stats">
+                                    <div class="product-sold">38 bán</div>
+                                    <div class="product-revenue">1.900.000₫</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Low Stock Alerts -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Cảnh báo tồn kho</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="product-list">
+                            <li class="product-item">
+                                <div class="product-info">
+                                    <div class="product-name">Máy tinh ROSA </div>
+                                </div>
+                                <div class="product-status">
+                                    <div style="margin-bottom: 0.25rem;">15 còn</div>
+                                    <span class="status-badge status-success">Sắp hết</span>
+                                </div>
+                            </li>
+                            <li class="product-item">
+                                <div class="product-info">
+                                    <div class="product-name">Tai nghe Sony WH-1000XM4</div>
+                                </div>
+                                <div class="product-status">
+                                    <div style="margin-bottom: 0.25rem;">123 còn</div>
+                                    <span class="status-badge status-warning">Còn hàng</span>
+                                </div>
+                            </li>
+                            <li class="product-item">
+                                <div class="product-info">
+                                    <div class="product-name">Camera Canon EOS R5</div>
+                                </div>
+                                <div class="product-status">
+                                    <div style="margin-bottom: 0.25rem;">0 còn</div>
+                                    <span class="status-badge status-danger">Hết hàng</span>
+                                </div>
+                            </li>
+                            <li class="product-item">
+                                <div class="product-info">
+                                    <div class="product-name">Laptop ROSA AI </div>
+                                </div>
+                                <div class="product-status">
+                                    <div style="margin-bottom: 0.25rem;">8 còn</div>
+                                    <span class="status-badge status-warning">Sắp hết</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3 class="card-title">Doanh thu theo tháng</h3>
+                    <canvas id="revenueChart" width="400" height="200"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <h3 class="card-title">Đơn hàng theo trạng thái</h3>
+                    <canvas id="orderChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <footer class="rosa-footer">
+        <div class="wrapper">
+            <div class="footer-main">
+                <!-- Về chúng tôi -->
+                <div class="footer-column">
+                    <h3>Về chúng tôi</h3>
+                    <ul>
+                        <li><a href="gioithieu.html">Giới thiệu</a></li>
+                        <li><a href="tuyendung.html">Tuyển dụng</a></li>
+                        <li><a href="tintuc.html">Tin tức</a></li>
+                    </ul>
+                </div>
+                <!-- Hỗ trợ -->
+                <div class="footer-column">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="/danhsachdaily.php">Trung tâm trợ giúp</a></li>
+                        <li><a href="/sanpham.php">Liên hệ</a></li>
+                        <li><a href="/chinhsachbaohanh.php">Báo cáo vi phạm</a></li>
+                    </ul>
+                </div>
+                <!-- Dịch vụ -->
+                <div class="footer-column">
+                    <h3>Dịch vụ</h3>
+                    <ul>
+                        <li><a href="/courses/python-course.php">Đăng ký nhà cung cấp</a></li>
+                        <li><a href="/courses/yolo-course.php">Quảng cáo</a></li>
+                        <li><a href="/ROSA-SW.php">API</a></li>
+                    </ul>
+                </div>
+
+                <!-- Mạng xã hội -->
+                <div class="footer-column">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <a href="https://zalo.me/909749126673606301" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/color/48/zalo.png" alt="zalo" />
+                    </a>
+                    <a href="https://www.facebook.com/rosaaicomputer/" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/fluency/48/facebook-new.png"
+                            alt="facebook" />
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/fluency/48/linkedin.png"
+                            alt="linkedin" />
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/fluency/48/twitter.png" alt="twitter" />
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer bottom -->
+            <div class="footer-bottom">
+                <p>© 2025 AI Bán sỉ. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/css/footer.css">
+
+</body>
+
+</html>

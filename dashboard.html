@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/Dashboard.css">
+    <title>Dashboard - AI Bán Sỉ</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-logo">AI Bán Sỉ</div>
+        <nav>
+            <ul class="header-nav-menu">
+                <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+                    <img width="30" height="30" style="margin-right:360px;"
+                        src="https://img.icons8.com/ios-glyphs/30/more-than.png" alt="back--v1" />
+                </div>
+                <li><a href="index.html">Sản phẩm</a></li>
+                <li><a href="chatbot.html">AI Find</a></li>
+                <li><a href="tin-tuc/template.html">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="cart.html">Đơn hàng</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="header-search">
+                <span class="header-search-icon">🔍</span>
+                <input type="text" class="header-search-input" placeholder="Tìm kiếm">
+            </div>
+            <div class="header-cart">
+                <img src="static/image/Bag.png" alt="Giỏ hàng" width="24">
+            </div>
+        </div>
+
+        <!-- Nút menu mobile -->
+        <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+            <img width="30" height="30" src="https://img.icons8.com/flat-round/64/back--v1.png" alt="back--v1" />
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Dashboard</h1>
+                <p class="page-subtitle">Tổng quan về hoạt động kinh doanh của bạn</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Tổng doanh thu</div>
+                        <div class="stat-icon">💰</div>
+                    </div>
+                    <div class="stat-value">2.5B₫</div>
+                    <div class="stat-change positive">
+                        <span>↗</span>
+                        <span>+12.5% so với tháng trước</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Đơn hàng</div>
+                        <div class="stat-icon">📦</div>
+                    </div>
+                    <div class="stat-value">1,247</div>
+                    <div class="stat-change positive">
+                        <span>↗</span>
+                        <span>+8.3% so với tháng trước</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Khách hàng</div>
+                        <div class="stat-icon">👥</div>
+                    </div>
+                    <div class="stat-value">3,456</div>
+                    <div class="stat-change positive">
+                        <span>↗</span>
+                        <span>+15.2% so với tháng trước</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Sản phẩm</div>
+                        <div class="stat-icon">📱</div>
+                    </div>
+                    <div class="stat-value">2,891</div>
+                    <div class="stat-change positive">
+                        <span>↗</span>
+                        <span>+5.7% so với tháng trước</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Charts Section -->
+                <div class="charts-section">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Biểu đồ doanh thu</h3>
+                        <div class="chart-tabs">
+                            <button class="chart-tab active" onclick="switchChart('revenue')">Doanh thu</button>
+                            <button class="chart-tab" onclick="switchChart('orders')">Đơn hàng</button>
+                            <button class="chart-tab" onclick="switchChart('customers')">Khách hàng</button>
+                        </div>
+                    </div>
+                    <div class="chart-container" id="chartContainer">
+                        📊 Biểu đồ doanh thu 6 tháng gần đây
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="recent-orders">
+                    <div class="section-header">
+                        <h3 class="section-title">Đơn hàng gần đây</h3>
+                        <a href="orders.html" class="view-all">Xem tất cả</a>
+                    </div>
+
+                    <div class="order-item">
+                        <div class="order-info">
+                            <div class="order-number">#ORD001</div>
+                            <div class="order-date">15/12/2023</div>
+                        </div>
+                        <div class="order-status status-delivered">Đã giao</div>
+                        <div class="order-amount">41.980.000₫</div>
+                    </div>
+
+                    <div class="order-item">
+                        <div class="order-info">
+                            <div class="order-number">#ORD002</div>
+                            <div class="order-date">12/12/2023</div>
+                        </div>
+                        <div class="order-status status-shipping">Đang giao</div>
+                        <div class="order-amount">49.980.000₫</div>
+                    </div>
+
+                    <div class="order-item">
+                        <div class="order-info">
+                            <div class="order-number">#ORD003</div>
+                            <div class="order-date">10/12/2023</div>
+                        </div>
+                        <div class="order-status status-confirmed">Đã xác nhận</div>
+                        <div class="order-amount">32.990.000₫</div>
+                    </div>
+
+                    <div class="order-item">
+                        <div class="order-info">
+                            <div class="order-number">#ORD004</div>
+                            <div class="order-date">08/12/2023</div>
+                        </div>
+                        <div class="order-status status-pending">Chờ xác nhận</div>
+                        <div class="order-amount">2.590.000₫</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions & Notifications -->
+            <div class="dashboard-grid">
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3 class="section-title">Thao tác nhanh</h3>
+                    <div class="actions-grid">
+                        <a href="products.html" class="action-card">
+                            <div class="action-icon">➕</div>
+                            <div class="action-title">Thêm sản phẩm</div>
+                            <div class="action-desc">Thêm sản phẩm mới vào hệ thống</div>
+                        </a>
+
+                        <a href="orders.html" class="action-card">
+                            <div class="action-icon">📋</div>
+                            <div class="action-title">Quản lý đơn hàng</div>
+                            <div class="action-desc">Xem và xử lý đơn hàng</div>
+                        </a>
+
+                        <a href="agents.html" class="action-card">
+                            <div class="action-icon">👥</div>
+                            <div class="action-title">Quản lý đại lý</div>
+                            <div class="action-desc">Thêm và quản lý đại lý</div>
+                        </a>
+
+                        <a href="suppliers.html" class="action-card">
+                            <div class="action-icon">🏪</div>
+                            <div class="action-title">Nhà cung cấp</div>
+                            <div class="action-desc">Quản lý nhà cung cấp</div>
+                        </a>
+
+                        <a href="chatbot.html" class="action-card">
+                            <div class="action-icon">🤖</div>
+                            <div class="action-title">AI Chatbot</div>
+                            <div class="action-desc">Hỗ trợ khách hàng tự động</div>
+                        </a>
+
+                        <a href="profile.html" class="action-card">
+                            <div class="action-icon">⚙️</div>
+                            <div class="action-title">Cài đặt</div>
+                            <div class="action-desc">Cấu hình hệ thống</div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- Notifications -->
+                <div class="notifications">
+                    <h3 class="section-title">Thông báo</h3>
+
+                    <div class="notification-item">
+                        <div class="notification-icon success">✓</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Đơn hàng mới</div>
+                            <div class="notification-text">Bạn có 3 đơn hàng mới cần xử lý</div>
+                            <div class="notification-time">2 phút trước</div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon info">ℹ</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Cập nhật hệ thống</div>
+                            <div class="notification-text">Hệ thống đã được cập nhật lên phiên bản 2.1.0</div>
+                            <div class="notification-time">1 giờ trước</div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon warning">⚠</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Cảnh báo tồn kho</div>
+                            <div class="notification-text">5 sản phẩm sắp hết hàng</div>
+                            <div class="notification-time">3 giờ trước</div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon danger">!</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Lỗi thanh toán</div>
+                            <div class="notification-text">Có lỗi xảy ra với đơn hàng #ORD005</div>
+                            <div class="notification-time">5 giờ trước</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notificatuons">
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Switch chart
+        function switchChart(type) {
+            // Update active tab
+            document.querySelectorAll('.chart-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update chart content
+            const chartContainer = document.getElementById('chartContainer');
+            const chartData = {
+                'revenue': '📊 Biểu đồ doanh thu 6 tháng gần đây',
+                'orders': '📈 Biểu đồ số lượng đơn hàng theo tháng',
+                'customers': '👥 Biểu đồ tăng trưởng khách hàng'
+            };
+
+            chartContainer.textContent = chartData[type];
+        }
+
+        // Search functionality
+        document.querySelectorAll('.search-input').forEach(input => {
+            input.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    const searchTerm = this.value;
+                    if (searchTerm.trim()) {
+                        window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
+                    }
+                }
+            });
+        });
+
+        // Cart icon click
+        document.querySelector('.cart-icon').addEventListener('click', function () {
+            window.location.href = 'cart.html';
+        });
+
+        // Auto refresh stats (demo)
+        setInterval(() => {
+            // In a real app, this would fetch updated data from API
+            console.log('Refreshing dashboard data...');
+        }, 30000); // Refresh every 30 seconds
+
+        // Initialize dashboard
+        console.log('Dashboard initialized');
+    </script>
+</body>
+
+</html>

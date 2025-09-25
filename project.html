@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/project.css">
+    <script src="static/js/project.js"></script>
+
+    <title>AI Bán Sỉ - Hồ sơ cá nhân</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-logo">
+            AI Bán Sỉ
+        </div>
+        <nav>
+            <ul class="header-nav-menu">
+                <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+                    <img width="30" height="30" style="margin-right:360px;" src="static/image/circle-arrow-right.png"
+                        alt="back--v1" />
+                </div>
+                <li><a href="index.html">Sản phẩm</a></li>
+                <li><a href="chatbot.html">AI Find</a></li>
+                <li><a href="tin-tuc/template.html">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="cart.html">Đơn hàng</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="header-search">
+                <span class="header-search-icon">🔍</span>
+                <input type="text" class="header-search-input" placeholder="Tìm kiếm">
+            </div>
+            <div class="header-cart">
+                <img src="static/image/Bag.png" alt="Giỏ hàng" width="24">
+            </div>
+        </div>
+        <!-- Nút menu mobile -->
+        <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+            <img width="30" height="30" src="static/image/circle-arrow-left.png" alt="back--v1" />
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="nav-item active">
+                    <!-- <div class="nav-icon"></div> -->
+                    <div class="nav-text">Thông tin cá nhân</div>
+                </div>
+                <div class="nav-item">
+                    <!-- <div class="nav-icon"></div> -->
+                    <div class="nav-text">Doanh nghiệp</div>
+                </div>
+                <div class="nav-item">
+                    <!-- <div class="nav-icon"></div> -->
+                    <div class="nav-text">Bảo mật</div>
+                </div>
+                <div class="nav-item">
+                    <!-- <div class="nav-icon"></div> -->
+                    <div class="nav-text">Thông báo</div>
+                </div>
+                <div class="nav-item">
+                    <!-- <div class="nav-icon"></div> -->
+                    <div class="nav-text">Thiết bị</div>
+                </div>
+                <div class="nav-item">
+                    <!-- <div class="nav-icon"></div> -->
+                    <div class="nav-text">Thanh toán</div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <!-- Personal Information Section -->
+            <section class="profile-section">
+                <div class="section-header">
+                    <h2>Thông tin cá nhân</h2>
+                </div>
+                <div class="section-body">
+                    <div class="profile-avatar-section">
+                        <div class="avatar-container">
+                            <div class="avatar-placeholder"></div>
+                            <button class="change-avatar-btn">Thay đổi ảnh</button>
+                        </div>
+                        <div class="profile-info">
+                            <div class="form-group">
+                                <label>Họ và tên</label>
+                                <input type="text" placeholder="Nhập tên của bạn ">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="nhập ten email">
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Số điện thoại</label>
+                                <input type="tel" placeholder="Nhập số điện thoại">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn-primary">Lưu thay đổi</button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Business Information Section -->
+            <section class="profile-section">
+                <div class="section-header">
+                    <h2>Thông tin doanh nghiệp</h2>
+                </div>
+                <div class="section-body">
+                    <div class="form-group">
+                        <label>Tên công ty</label>
+                        <input type="text" placeholder="Nhập tên công ty">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mã số thuê</label>
+                        <input type="text" placeholder="Nhập mã số thuế">
+
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ kinh doanh</label>
+                        <textarea placeholder="Nhập địa chỉ kinh doanh"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Website (nếu có)</label>
+                        <input type="url" placeholder="https://example.com">
+                    </div>
+                    <div class="file-upload-section">
+                        <label>Đăng tải giấy phép kinh doanh</label>
+                        <div class="file-upload-area">
+                            <div class="upload-icon">📎</div>
+                            <p>Kéo thả file hoặc chọn file</p>
+                            <small>PDF, JPG, PNG tối đa 10MB</small>
+                        </div>
+                    </div>
+
+                    <div class="section-actions">
+                        <button class="btn-secondary large">Xác nhận thông tin doanh nghiệp</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Section -->
+            <section class="profile-section">
+                <div class="section-header">
+                    <h2>Bảo mật & Mật khẩu</h2>
+                </div>
+                <div class="section-body">
+                    <div class="form-group">
+                        <label>Mật khẩu hiện tại</label>
+                        <input type="password">
+                    </div>
+                    <div class="form-group">
+                        <label>Mật khẩu mới</label>
+                        <input type="password">
+                    </div>
+                    <div class="form-group">
+                        <label>Xác nhận mật khẩu mới</label>
+                        <input type="password">
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn-secondary">Cập nhật mật khẩu</button>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Notifications Section -->
+            <section class="profile-section">
+                <div class="section-header">
+                    <h2>Cài đặt thông báo</h2>
+                </div>
+                <div class="section-body">
+                    <div class="notification-item">
+                        <div class="notification-content">
+                            <h3>Thông báo khi có đơn hàng mới</h3>
+                            <p>Nhận thông báo khi có đơn hàng mới từ khách hàng</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notification-content">
+                            <h3>Thông báo khi sản phẩm sắp hết hàng</h3>
+                            <p>Cảnh báo khi số lượng tồn kho dưới mức tối thiểu</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notification-content">
+                            <h3>Thông báo khi có yêu cầu thương lượng giá</h3>
+                            <p>Nhận thông báo khi khách hàng yêu cầu thương lượng giá</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Devices Section -->
+            <section class="profile-section">
+                <div class="section-header">
+                    <h2>Quản lý thiết bị</h2>
+                    <button class="btn-outline logout-all">Đăng xuất</button>
+                </div>
+                <div class="section-body">
+                    <table class="devices-table">
+                        <thead>
+                            <tr>
+                                <th>Thiết bị</th>
+                                <th>Địa chỉ IP</th>
+                                <th>Lần đăng nhập gần nhất</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="device-info">
+                                        <span class="device-icon">🌐</span>
+                                        <span>Chrome trên Windows</span>
+                                    </div>
+                                </td>
+                                <td>192.168.1.100</td>
+                                <td>2 phút trước</td>
+                                <td><span class="status active">Đang hoạt động</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="device-info">
+                                        <span class="device-icon">📱</span>
+                                        <span>Safari trên iPhone</span>
+                                    </div>
+                                </td>
+                                <td>10.0.0.50</td>
+                                <td>1 giờ trước</td>
+                                <td><span class="status inactive">Không hoạt động</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Payment Section -->
+            <section class="profile-section">
+                <div class="section-header">
+                    <h2>Thanh toán & Hoá đơn</h2>
+                </div>
+                <div class="section-body">
+                    <!-- Payment Methods -->
+                    <div class="payment-methods">
+                        <h3>Phương thức thanh toán</h3>
+                        <div class="payment-card">
+                            <div class="card-info">
+                                <span class="card-icon">💳</span>
+                                <div class="card-details">
+                                    <div>Techcombank **** 1234</div>
+                                    <div>Hết hạn 12/2027</div>
+                                </div>
+                            </div>
+                            <button class="btn-link">Chỉnh sửa</button>
+                        </div>
+                        <button class="btn-outline add-payment">+ Thêm phương thức thanh toán</button>
+                    </div>
+
+                    <!-- Invoice History -->
+                    <div class="invoice-history">
+                        <h3>Lịch sử hoá đơn</h3>
+                        <table class="invoices-table">
+                            <thead>
+                                <tr>
+                                    <th>ID Hoá đơn</th>
+                                    <th>Ngày</th>
+                                    <th>Số tiền</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#INV-2025-001</td>
+                                    <td>15/01/2025</td>
+                                    <td>2,500,000 VNĐ</td>
+                                    <td><span class="status paid">Đã thanh toán</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#INV-2025-002</td>
+                                    <td>10/01/2025</td>
+                                    <td>1,200,000 VNĐ</td>
+                                    <td><span class="status pending">Chờ thanh toán</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer class="rosa-footer">
+        <div class="wrapper">
+            <div class="footer-main">
+                <!-- Về chúng tôi -->
+                <div class="footer-column">
+                    <h3>Về chúng tôi</h3>
+                    <ul>
+                        <li><a href="gioithieu.html">Giới thiệu</a></li>
+                        <li><a href="tuyendung.html">Tuyển dụng</a></li>
+                        <li><a href="tintuc.html">Tin tức</a></li>
+                    </ul>
+                </div>
+
+                <!-- Hỗ trợ -->
+                <div class="footer-column">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="/danhsachdaily.php">Trung tâm trợ giúp</a></li>
+                        <li><a href="/sanpham.php">Liên hệ</a></li>
+                        <li><a href="/chinhsachbaohanh.php">Báo cáo vi phạm</a></li>
+                    </ul>
+
+                </div>
+
+                <!-- Dịch vụ -->
+                <div class="footer-column">
+                    <h3>Dịch vụ</h3>
+                    <ul>
+                        <li><a href="/courses/python-course.php">Đăng ký nhà cung cấp</a></li>
+                        <li><a href="/courses/yolo-course.php">Quảng cáo</a></li>
+                        <li><a href="/ROSA-SW.php">API</a></li>
+                    </ul>
+                </div>
+
+                <!-- Mạng xã hội -->
+                <div class="footer-column">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <a href="https://zalo.me/909749126673606301" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/color/48/zalo.png" alt="zalo" />
+                    </a>
+                    <a href="https://www.facebook.com/rosaaicomputer/" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/fluency/48/facebook-new.png"
+                            alt="facebook" />
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/fluency/48/linkedin.png"
+                            alt="linkedin" />
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/fluency/48/twitter.png" alt="twitter" />
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer bottom -->
+            <div class="footer-bottom">
+                <p>© 2025 AI Bán sỉ. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/css/footer.css">

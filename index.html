@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/trangchu.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <!-- Add Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="static/js/chatbot.js"></script>
+    <title>AI Bán Sỉ - Nền tảng AI dành riêng cho Đại lý</title>
+    <style>
+        /* Custom styles for the logo carousel */
+        .logo-section .owl-carousel .owl-item img {
+            width: 150px;
+            height: auto;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+        .logo-section .owl-carousel .owl-item img:hover {
+            transform: scale(1.1);
+        }
+        .logo-section .owl-carousel .owl-nav {
+            display: flex; /* Show navigation buttons */
+            justify-content: center;
+            margin-top: 20px; /* Space below the carousel */
+            gap: 15px; /* Space between buttons */
+        }
+        .logo-section .owl-carousel .owl-nav button {
+            background: #007bff; /* Primary color */
+            color: #fff;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .logo-section .owl-carousel .owl-nav button:hover {
+            background: #0056b3; /* Darker shade on hover */
+        }
+        .logo-section .owl-carousel .owl-nav .owl-prev span,
+        .logo-section .owl-carousel .owl-nav .owl-next span {
+            line-height: 1; /* Ensure proper alignment of arrow symbols */
+        }
+        .logo-section .owl-carousel .owl-dots {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .logo-section .owl-carousel .owl-dot {
+            display: inline-block;
+            margin: 0 5px;
+        }
+        .logo-section .owl-carousel .owl-dot span {
+            width: 10px;
+            height: 10px;
+            background: #ccc;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .logo-section .owl-carousel .owl-dot.active span {
+            background: #007bff; /* Match primary color */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-logo">AI Bán Sỉ</div>
+        <nav>
+            <ul class="header-nav-menu">
+                <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+                    <img width="30" height="30" style="margin-right:360px;"
+                        src="https://img.icons8.com/ios-glyphs/30/more-than.png" alt="back--v1" />
+                </div>
+                <li><a href="index.html">Sản phẩm</a></li>
+                <li><a href="chatbot.html">AI Find</a></li>
+                <li><a href="tin-tuc/template.html">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="cart.html">Đơn hàng</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="header-search">
+                <span class="header-search-icon">🔍</span>
+                <input type="text" class="header-search-input" placeholder="Tìm kiếm">
+            </div>
+            <div class="header-cart">
+                <img src="static/image/Bag.png" alt="Giỏ hàng" width="24">
+            </div>
+        </div>
+        <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+            <img width="30" height="30" src="https://img.icons8.com/flat-round/64/back--v1.png" alt="back--v1" />
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="page-container">
+            <div class="hero-section">
+                <img src="static/image/banner.png" alt="Banner" class="hero-image">
+                <div class="hero-text">
+                    <h1>Nền tảng AI dành riêng cho Đại lý</h1>
+                    <p>Tìm kiếm nguồn cung cấp tốt nhất với công nghệ AI tiên tiến.
+                        Kết nối trực tiếp với nhà phân phối uy tín và quản lý đơn hàng một cách thông minh.</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary">Khám phá ngay</button>
+                        <button class="btn-secondary">Trở thành Đối tác</button>
+                    </div>
+                    <div class="hero-search">
+                        <input type="text" placeholder="Hãy nhập sản phẩm bạn muốn tìm nguồn cung cấp tốt nhất...">
+                        <button>🔍</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="featured-products">
+        <div class="page-container">
+            <h2 class="section-title">Sản phẩm nổi bật</h2>
+            <div class="benefits-grid">
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info"></div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info"></div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info"></div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="page-container">
+            <h2 class="section-title">Lợi ích vượt trội</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔍</div>
+                    <h3>Tìm kiếm dễ dàng</h3>
+                    <p>Tìm kiếm thông minh với AI, kết quả chính xác và nhanh chóng</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💬</div>
+                    <h3>Thương lượng trực tiếp</h3>
+                    <p>Kết nối trực tiếp với nhà phân phối để đàm phán giá cả</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛒</div>
+                    <h3>Giỏ hàng linh hoạt</h3>
+                    <p>Quản lý đơn hàng từ nhiều nhà cung cấp trong một giỏ hàng</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Smart Dashboard</h3>
+                    <p>Theo dõi đơn hàng, doanh thu và phân tích kinh doanh</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="target-sections">
+        <div class="page-container">
+            <div class="target-grid">
+                <div class="target-card">
+                    <h3><span class="target-icon">🏪</span>Dành cho Đại lý</h3>
+                    <ul class="benefit-list">
+                        <li><span class="checkmark">✓</span> Tiết kiệm thời gian tìm kiếm</li>
+                        <li><span class="checkmark">✓</span> So sánh nhiều nguồn cung cấp</li>
+                        <li><span class="checkmark">✓</span> Đàm phán trực tiếp</li>
+                        <li><span class="checkmark">✓</span> Quản lý đơn hàng thông minh</li>
+                    </ul>
+                </div>
+                <div class="target-card">
+                    <h3><span class="target-icon">📦</span>Dành cho Nhà phân phối</h3>
+                    <ul class="benefit-list">
+                        <li><span class="checkmark">✓</span> Quản lý kho hiệu quả</li>
+                        <li><span class="checkmark">✓</span> Tăng uy tín thương hiệu</li>
+                        <li><span class="checkmark">✓</span> Mở rộng mạng lưới khách hàng</li>
+                        <li><span class="checkmark">✓</span> Tăng doanh thu bán hàng</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust">
+        <div class="page-container">
+            <h2>An toàn – Minh bạch – Nhanh chóng</h2>
+            <p>Được tin tưởng bởi hơn 10,000+ doanh nghiệp trên toàn quốc</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="page-container">
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">👤</div>
+                    <div class="testimonial-text">"Tôi đã tìm được những nhà cung cấp tuyệt vời thông qua
+                        nền tảng
+                        này.
+                        Rất tiện lợi và hiệu quả!"</div>
+                    <div class="testimonial-name">Nguyễn Văn A</div>
+                    <div class="testimonial-role">Đại lý thời trang</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">👤</div>
+                    <div class="testimonial-text">"Doanh số bán hàng của chúng tôi đã tăng 40% kể từ khi sử
+                        dụng AI
+                        Bán
+                        Sỉ."</div>
+                    <div class="testimonial-name">Trần Thị B</div>
+                    <div class="testimonial-role">Nhà cung cấp</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">👤</div>
+                    <div class="testimonial-text">"Giao diện thân thiện và AI thông minh giúp tôi quản lý
+                        cửa hàng
+                        tốt
+                        hơn."</div>
+                    <div class="testimonial-name">Lê Văn C</div>
+                    <div class="testimonial-role">Chủ cửa hàng</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Partners Section with Owl Carousel -->
+    <section class="logo-section">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>ĐỐI TÁC THƯƠNG HIỆU</h3>
+                <span class="section-title-border"></span>
+            </div>
+            <div class="owl-carousel owl-theme logo-container">
+                <div class="item">
+                    <img src="static/image/logo/INTEL.png" alt="Intel">
+                </div>
+                <div class="item">
+                    <img src="static/image/logo/KINGSTON.png" alt="Kingston">
+                </div>
+                <div class="item">
+                    <img src="static/image/logo/AMD.png" alt="AMD">
+                </div>
+                <div class="item">
+                    <img src="static/image/logo/ASUS.png" alt="Asus">
+                </div>
+                <div class="item">
+                    <img src="static/image/logo/GSKILL.png" alt="G.Skill">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="page-container">
+            <div class="section-title text-center">
+                <h3>Đăng ký nhận bản tin</h3>
+                <p>Nhận thông tin sản phẩm và ưu đãi mới nhất từ AI Bán Sỉ</p>
+                <span class="section-title-border"></span>
+            </div>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Nhập email của bạn...">
+                <button>Đăng ký</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="rosa-footer">
+        <div class="wrapper">
+            <div class="footer-main">
+                <div class="footer-column">
+                    <h3>Về chúng tôi</h3>
+                    <ul>
+                        <li><a href="gioithieu.html">Giới thiệu</a></li>
+                        <li><a href="tuyendung.html">Tuyển dụng</a></li>
+                        <li><a href="tintuc.html">Tin tức</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="/danhsachdaily.php">Trung tâm trợ giúp</a></li>
+                        <li><a href="/sanpham.php">Liên hệ</a></li>
+                        <li><a href="/chinhsachbaohanh.php">Báo cáo vi phạm</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Dịch vụ</h3>
+                    <ul>
+                        <li><a href="/courses/python-course.php">Đăng ký nhà cung cấp</a></li>
+                        <li><a href="/courses/yolo-course.php">Quảng cáo</a></li>
+                        <li><a href="/ROSA-SW.php">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <a href="https://zalo.me/909749126673606301" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/color/48/zalo.png" alt="zalo" />
+                    </a>
+                    <a href="https://www.facebook.com/rosaaicomputer/" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/fluency/48/facebook-new.png"
+                            alt="facebook" />
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/fluency/48/linkedin.png"
+                            alt="linkedin" />
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <img width="32" height="32" src="https://img.icons8.com/fluency/48/twitter.png" alt="twitter" />
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 AI Bán sỉ. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+            $(".logo-container").owlCarousel({
+                loop: true,
+                margin: 20,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                nav: true, /* Enable navigation buttons */
+                navText: [
+                    '<span>← Trước</span>', /* Custom Previous button with text */
+                    '<span>Sau →</span>'  /* Custom Next button with text */
+                ],
+                dots: true, /* Keep dots for additional navigation */
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

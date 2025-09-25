@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSD 512GB NVMe Gen4 - AI Bán Sỉ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Container chính */
+    .page-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* --- Header Styles --- */
+    header {
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      margin-bottom: 20px;
+      background: #ffffff;
+      /* border-bottom: 1px solid #e0e0e0; */
+    }
+
+    header .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    header nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    header nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: #007bff;
+    }
+
+    header .actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header .actions .search-container {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 0.3rem 0.5rem;
+    }
+
+    header .actions .search-container input {
+      padding: 0.2rem;
+      border: none;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    
+    header .actions .search-container span {
+      margin-left: 5px;
+      color: #007bff;
+      cursor: pointer;
+    }
+
+    header .actions button {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    header .actions button:hover {
+      transform: scale(1.2);
+    }
+
+    /* Hamburger Menu */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #f0f2f5;
+        padding: 1rem;
+      }
+
+      header nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* ----------------- PRODUCT PAGE CSS ----------------- */
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .product-image-section {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 20px;
+    }
+
+    .main-image {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 10px;
+      border: none;       /* bỏ viền */
+      border-radius: 0;   /* bỏ bo góc */
+    }
+
+    .thumbnail-images {
+      display: flex;
+      gap: 10px;
+    }
+
+    .thumbnail-images img {
+      width: 80px;
+      height: 80px;
+      border: none;       /* bỏ khung mặc định */
+      border-radius: 0;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+
+    .thumbnail-images img:hover, .thumbnail-images img.active {
+      border: 2px solid #007bff; /* chỉ highlight khi chọn */
+    }
+
+    .product-details-section {
+      flex: 1.5;
+      min-width: 300px;
+      padding-left: 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #1e1e1e;
+      margin-top: 0;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    .min-quantity {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .buy-options {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .buy-options label {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .buy-options input[type="number"] {
+      width: 80px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .find-best-price {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .find-best-price:hover {
+      background-color: #0056b3;
+    }
+
+    .best-deal-box {
+      background: none;  /* bỏ nền */
+      border: none;      /* bỏ viền */
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+
+    .best-deal-box p {
+      margin: 0;
+    }
+
+    .best-deal-text {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0056b3;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .system-note {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-buttons button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s, border-color 0.3s;
+      flex-grow: 1;
+    }
+
+    .add-to-cart {
+      background-color: #0d6efd;
+      color: #fff;
+    }
+
+    .add-to-cart:hover {
+      background-color: #0b5ed7;
+    }
+
+    .buy-now {
+      background-color: #f8f9fa;
+      color: #333;
+      border: 1px solid #ccc;
+    }
+
+    .buy-now:hover {
+      background-color: #e2e6ea;
+    }
+
+    .product-tabs-section {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .tabs-header {
+      display: flex;
+      border-bottom: 2px solid #ddd;
+      margin-bottom: 20px;
+    }
+
+    .tab-button {
+      background-color: transparent;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      color: #666;
+      transition: color 0.3s;
+      margin-bottom: -2px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-button.active {
+      color: #007bff;
+      border-bottom: 2px solid #007bff;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+    
+    .product-description-layout {
+      display: flex;
+      gap: 20px;
+    }
+
+    .description-panel, .specs-panel {
+      background: none;  /* bỏ nền xám */
+      border: none;      /* bỏ viền */
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      min-height: 200px;
+    }
+    .description-panel {
+      flex: 3;
+    }
+    .specs-panel {
+      flex: 2;
+    }
+
+    .related-products-section {
+      padding: 20px 0;
+    }
+
+    .related-products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .related-product-card {
+      background: none;   /* bỏ nền */
+      border: none;       /* bỏ viền */
+      padding: 15px;
+      text-align: center;
+    }
+
+    .related-product-image-placeholder {
+      background: none;  /* bỏ nền */
+      height: 150px;
+      margin-bottom: 10px;
+      border-radius: 0;
+    }
+
+    .related-product-card p {
+      margin: 5px 0;
+    }
+
+    .related-product-card .name {
+      font-weight: 500;
+    }
+
+    .related-product-card .price {
+      font-size: 1rem;
+      color: #dc3545;
+      font-weight: 500;
+    }
+
+    .related-product-card button {
+      background-color: #fff;
+      color: #333;
+      border: 1px solid #ccc;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .related-product-card button:hover {
+      background-color: #f0f2f5;
+    }
+
+    @media (max-width: 768px) {
+      .product-container {
+        flex-direction: column;
+      }
+      .product-image-section, .product-details-section {
+        padding: 0;
+      }
+      .product-description-layout {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <header>
+      <div class="logo">AI Bán Sỉ</div>
+      <button class="menu-toggle">☰</button>
+      <nav>
+        <a href="#">Sản phẩm</a>
+        <a href="#">AI Find</a>
+        <a href="#">Tin tức</a>
+        <a href="#">Liên hệ</a>
+        <a href="#">Chính sách</a>
+      </nav>
+      <div class="actions">
+        <div class="search-container">
+          <span>&#x2315;</span>
+          <input type="text" placeholder="Tìm sản phẩm">
+        </div>
+        <button>🛒</button>
+        <button>👤</button>
+      </div>
+    </header>
+
+    <div class="product-container">
+      <div class="product-image-section">
+        <img src="https://i.imgur.com/G5g2mJc.png" alt="SSD 512GB NVMe Gen4" class="main-image">
+        <div class="thumbnail-images">
+          <img src="https://i.imgur.com/gK0Cq0T.png" alt="Thumbnail 1">
+          <img src="https://i.imgur.com/8QG34O1.png" alt="Thumbnail 2" class="active">
+          <img src="https://i.imgur.com/qFp3HhI.png" alt="Thumbnail 3">
+          <img src="https://i.imgur.com/5J3I6E9.png" alt="Thumbnail 4">
+        </div>
+      </div>
+      <div class="product-details-section">
+        <h1>SSD 512GB NVMe Gen4</h1>
+        <p class="price">Từ 950.000đ/bộ</p>
+        <p class="min-quantity">Số lượng tối thiểu: 10</p>
+        <div class="buy-options">
+          <label for="quantity">Nhập số lượng cần mua:</label>
+          <input type="number" id="quantity" value="10" min="10">
+          <button class="find-best-price">Tìm giá tốt nhất</button>
+        </div>
+        <div class="best-deal-box">
+          <p>Kết quả tốt nhất:</p>
+          <p class="best-deal-text">
+            Giá tốt nhất cho 50 bộ: 910.000đ/bộ
+          </p>
+          <p class="system-note">Giá do hệ thống AI tự động tìm nguồn cung cấp có kết quả tốt nhất.</p>
+        </div>
+        <div class="action-buttons">
+          <button class="add-to-cart">Thêm vào giỏ hàng</button>
+          <button class="buy-now">Đặt hàng ngay</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-tabs-section">
+      <div class="tabs-header">
+        <button class="tab-button active" data-tab="description">Mô tả sản phẩm</button>
+        <button class="tab-button" data-tab="specs">Thông số kỹ thuật</button>
+        <button class="tab-button" data-tab="warranty">Chính sách bảo hành</button>
+        <button class="tab-button" data-tab="reviews">Đánh giá</button>
+      </div>
+      <div class="tabs-content">
+        <div id="description" class="tab-pane active">
+          <div class="product-description-layout">
+            <div class="description-panel">
+              Nội dung mô tả sản phẩm
+            </div>
+            <div class="specs-panel">
+              Bảng thông số
+            </div>
+          </div>
+        </div>
+        <div id="specs" class="tab-pane">
+          <p>Nội dung thông số kỹ thuật</p>
+        </div>
+        <div id="warranty" class="tab-pane">
+          <p>Nội dung chính sách bảo hành</p>
+        </div>
+        <div id="reviews" class="tab-pane">
+          <p>Nội dung đánh giá</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="related-products-section">
+      <h2>Sản phẩm liên quan</h2>
+      <div class="related-products-grid">
+        <div class="related-product-card">
+          <div class="related-product-image-placeholder"></div>
+          <p class="name">SSD 256GB NVMe</p>
+          <p class="price">Từ 450.000đ</p>
+          <button>Xem chi tiết</button>
+        </div>
+        <div class="related-product-card">
+          <div class="related-product-image-placeholder"></div>
+          <p class="name">SSD 1TB NVMe</p>
+          <p class="price">Từ 1.850.000đ</p>
+          <button>Xem chi tiết</button>
+        </div>
+        <div class="related-product-card">
+          <div class="related-product-image-placeholder"></div>
+          <p class="name">RAM 16GB DDR4</p>
+          <p class="price">Từ 1.200.000đ</p>
+          <button>Xem chi tiết</button>
+        </div>
+        <div class="related-product-card">
+          <div class="related-product-image-placeholder"></div>
+          <p class="name">HDD 2TB SATA</p>
+          <p class="price">Từ 1.450.000đ</p>
+          <button>Xem chi tiết</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle menu mobile
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('header nav');
+      menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
+
+      // Logic giá tốt nhất
+      const findPriceBtn = document.querySelector('.find-best-price');
+      const quantityInput = document.getElementById('quantity');
+      const bestDealText = document.querySelector('.best-deal-text');
+
+      findPriceBtn.addEventListener('click', () => {
+        const quantity = parseInt(quantityInput.value);
+        if (quantity >= 50) {
+          const pricePerUnit = 910000;
+          bestDealText.textContent = `Giá tốt nhất cho ${quantity} bộ: ${pricePerUnit.toLocaleString('vi-VN')}đ/bộ`;
+        } else if (quantity >= 10) {
+          const pricePerUnit = 935000;
+          bestDealText.textContent = `Giá tốt nhất cho ${quantity} bộ: ${pricePerUnit.toLocaleString('vi-VN')}đ/bộ`;
+        } else {
+          bestDealText.textContent = 'Vui lòng nhập số lượng tối thiểu 10.';
+        }
+      });
+
+      // Tabs
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          tabPanes.forEach(pane => pane.classList.remove('active'));
+          button.classList.add('active');
+          document.getElementById(button.getAttribute('data-tab')).classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

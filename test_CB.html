@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Chatbot - Demo</title>
+  <!DOCTYPE html>
+  <html lang="vi">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/chatbot.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <script rel="stylesheet" href="static/js/chatbot.js"></script>
+    <script src="static/js/chatbot.js"></script> <!-- Sửa rel="stylesheet" thành src -->
+    <title>AI Chatbot - Demo</title>
+  </head>
+
+<body>
+  <header class="header">
+    <div class="header-logo">
+      <!-- <img width="30" height="30" src="static/image/bot.png" alt="" /> -->
+      AI Bán Sỉ
+    </div>
+    <nav>
+      <ul class="header-nav-menu">
+        <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+          <img width="30" height="30" style="margin-right:360px;" src="static/image/circle-arrow-right.png"
+            alt="back--v1" />
+        </div>
+        <li><a href="index.html">Sản phẩm</a></li>
+        <li><a href="#">Đại lý</a></li>
+        <li><a href="#">Tin tức</a></li>
+        <li><a href="#">Liên hệ</a></li>
+        <li><a href="#">Đơn hàng</a></li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <div class="header-search">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" class="header-search-input" placeholder="Tìm kiếm">
+      </div>
+      <div class="header-cart">
+        <img src="static/image/Bag.png" alt="Giỏ hàng" width="24">
+      </div>
+    </div>
+
+    <!-- Nút menu mobile -->
+    <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+      <img width="30" height="30" src="static/image/circle-arrow-left.png" alt="back--v1" />
+    </div>
+  </header>
+  <style>
+    /* Chat center */
+    .chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin-bottom: 1rem;
+      display: flex;
+    }
+
+    .message.user {
+      justify-content: flex-end;
+    }
+
+    .message-bubble {
+      padding: 0.8rem 1rem;
+      border-radius: 20px;
+      max-width: 70%;
+    }
+
+    .message.user .message-bubble {
+      background: #1976d2;
+      color: #fff;
+    }
+
+    .message.ai .message-bubble {
+      background: #f1f1f1;
+      color: #333;
+    }
+
+    .message-input-container {
+      padding: 0.8rem;
+      display: flex;
+      gap: 0.6rem;
+      border-top: 1px solid #eee;
+    }
+
+    .message-input {
+      flex: 1;
+      padding: 0.6rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .send-button {
+      background: #003087;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    /* Toggle */
+    .hidden {
+      display: none;
+    }
+
+    .toggle-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .rotate {
+      transform: rotate(90deg);
+    }
+  </style>
+  </head>
+
+  <body>
+    <div class="chat-container">
+
+      <!-- LEFT -->
+
+      <div class="chat-history">
+        <div class="history-header" onclick="toggleSection(this)">
+          <span>LỊCH SỬ TRÒ CHUYỆN</span>
+          <img class="toggle-icon" src="static/image/circle-arrow-right.png" width="15">
+        </div>
+        <div class="history-content">
+          <div class="chat-item">
+            <div class="chat-time">Hôm nay, 14:30</div>
+            <div class="chat-title">AI - Tìm kiếm SSD</div>
+          </div>
+          <div class="chat-item">
+            <div class="chat-time">Hôm qua, 16:45</div>
+            <div class="chat-title">Nhà cung cấp - RAM DDR4</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- CENTER -->
+      <div class="chat-area">
+        <div class="chat-messages">
+          <div class="message user">
+            <div class="message-bubble">Tôi cần mua 50 ổ cứng SSD 512GB.</div>
+          </div>
+          <div class="message ai">
+            <div class="message-bubble">Đây là 3 lựa chọn tốt nhất hiện tại cho SSD 512 GB.</div>
+          </div>
+        </div>
+
+        <!-- MOBILE SUGGESTIONS - CHỈ HIỆN TRÊN MOBILE -->
+        <div class="mobile-suggestions">
+          <div class="mobile-suggestions-header">
+            <span>LỊCH SỬ ĐỀ XUẤT</span>
+            <img width="15" height="15"
+              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTkgMThMMTUgMTJMOSA2IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg=="
+              alt="more-than" />
+          </div>
+
+          <div class="mobile-suggestions-container">
+            <div class="mobile-history-item">
+              <div class="mobile-history-image">
+                <img src="https://pcmarket.vn/media/product/10695_cpu_intel_core_i7_14700kf_pcm_1.jpg" alt="CPU Intel">
+              </div>
+              <div class="mobile-history-info">
+                <div class="mobile-history-product-name">Intel Core i5-13400</div>
+                <div class="mobile-history-product-price">4.401.000đ</div>
+                <div class="mobile-product-rating">★★★★★</div>
+              </div>
+            </div>
+
+            <div class="mobile-history-item">
+              <div class="mobile-history-image">
+                <img src="https://www.tncstore.vn/media/product/250-6538-cpu-amd-r5-5600-1.jpg" alt="CPU AMD">
+              </div>
+              <div class="mobile-history-info">
+                <div class="mobile-history-product-name">AMD Ryzen 5 5600</div>
+                <div class="mobile-history-product-price">4.875.000đ</div>
+                <div class="mobile-product-rating">★★★★★</div>
+              </div>
+            </div>
+
+            <div class="mobile-history-item">
+              <div class="mobile-history-image">
+                <img
+                  src="https://cdn.tgdd.vn/Products/Images/7699/309126/o-cung-ssd-western-digital-blue-sn570-500gb-m2-2280-pcie-30-wds500g3b0c-1.jpg"
+                  alt="SSD">
+              </div>
+              <div class="mobile-history-info">
+                <div class="mobile-history-product-name">WD Blue SSD 512GB</div>
+                <div class="mobile-history-product-price">950.000đ</div>
+                <div class="mobile-product-rating">★★★★☆</div>
+              </div>
+            </div>
+
+            <div class="mobile-history-item">
+              <div class="mobile-history-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5_5vSJqbxHN6PYyKZG2zS-qM1rF1_4_lm7w&s"
+                  alt="RAM">
+              </div>
+              <div class="mobile-history-info">
+                <div class="mobile-history-product-name">Corsair RAM 16GB</div>
+                <div class="mobile-history-product-price">1.200.000đ</div>
+                <div class="mobile-product-rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nhập tin nhắn -->
+        <div class="message-input-container">
+          <input type="text" id="messageInput" class="message-input" placeholder="Nhập tin nhắn...">
+          <button class="send-button" onclick="sendMessage()">
+            <img
+              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIgMjFMMjMgMTJMMiAzVjEwTDE3IDEyTDIgMTRWMjFaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4="
+              alt="Gửi" width="20" height="20">
+          </button>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <!-- RIGHT -->
+    <div class="product-suggestions">
+      <div class="suggestions-header" onclick="toggleSection(this)">
+        <span>LỊCH SỬ ĐỀ XUẤT</span>
+        <img class="toggle-icon" src="static/image/circle-arrow-right.png" width="15">
+      </div>
+      <div class="suggestions-content">
+        <div class="history-item">
+          <div class="history-image">
+            <img src="https://pcmarket.vn/media/product/10695_cpu_intel_core_i7_14700kf_pcm_1.jpg">
+          </div>
+          <div class="history-info">
+            <div class="history-product-name">Intel Core i5-13400</div>
+            <div class="history-product-price">4.401.000đ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <script>
+      function sendMessage() {
+        const input = document.getElementById('messageInput');
+        const text = input.value.trim();
+        if (!text) return;
+
+        const chatMessages = document.querySelector('.chat-messages');
+
+        // User message
+        const userMsg = document.createElement('div');
+        userMsg.className = 'message user';
+        userMsg.innerHTML = `<div class="message-bubble">${text}</div>`;
+        chatMessages.appendChild(userMsg);
+
+        input.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Fake AI reply
+        setTimeout(() => {
+          const aiMsg = document.createElement('div');
+          aiMsg.className = 'message ai';
+          aiMsg.innerHTML = `<div class="message-bubble">Tôi đã hiểu: "${text}"</div>`;
+          chatMessages.appendChild(aiMsg);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1000);
+      }
+
+      // Toggle section
+      function toggleSection(header) {
+        const content = header.nextElementSibling;
+        content.classList.toggle('hidden');
+
+        const icon = header.querySelector('.toggle-icon');
+        icon.classList.toggle('rotate');
+      }
+
+      // Enter để gửi
+      document.getElementById('messageInput')
+        .addEventListener('keypress', e => {
+          if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm - AI Bán Sỉ</title>
+    <link rel="stylesheet" href="static/css/prodcut.css">
+    <link rel="stylesheet" href="static/css/header.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-logo">
+            <!-- <img width="30" height="30" src="static/image/bot.png" alt="" /> -->
+            AI Bán Sỉ
+        </div>
+        <nav>
+            <ul class="header-nav-menu">
+                <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+                    <img width="30" height="30" style="margin-right:360px;" src="static/image/circle-arrow-right.png"
+                        alt="back--v1" />
+                </div>
+                <li><a href="index.html">Sản phẩm</a></li>
+                <li><a href="chatbot.html">AI Find</a></li>
+                <li><a href="tin-tuc/template.html">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="cart.html">Đơn hàng</a></li>
+        </nav>
+        <div class="header-right">
+            <div class="header-search">
+                <span class="header-search-icon">🔍</span>
+                <input type="text" class="header-search-input" placeholder="Tìm kiếm">
+            </div>
+            <div class="cart-icon">
+                🛒
+                <span class="cart-badge" id="cartBadge">3</span>
+
+            </div>
+        </div>
+        <div class="emprycart" dii>
+
+        </div>
+
+        <!-- Nút menu mobile -->
+        <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+            <img width="30" height="30" src="static/image/circle-arrow-left.png" alt="back--v1" />
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Sản phẩm</h1>
+                <p class="page-subtitle">Khám phá hàng nghìn sản phẩm chất lượng từ các nhà cung cấp uy tín</p>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="filters-section">
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label class="filter-label">Danh mục</label>
+                        <select class="filter-select" id="categoryFilter">
+                            <option value="">Tất cả</option>
+                            <option value="electronics">Điện tử</option>
+                            <option value="fashion">Thời trang</option>
+                            <option value="home">Gia dụng</option>
+                            <option value="sports">Thể thao</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">Giá</label>
+                        <select class="filter-select" id="priceFilter">
+                            <option value="">Tất cả</option>
+                            <option value="0-500000">Dưới 500k</option>
+                            <option value="500000-1000000">500k - 1M</option>
+                            <option value="1000000-5000000">1M - 5M</option>
+                            <option value="5000000+">Trên 5M</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">Đánh giá</label>
+                        <select class="filter-select" id="ratingFilter">
+                            <option value="">Tất cả</option>
+                            <option value="5">5 sao</option>
+                            <option value="4">4 sao trở lên</option>
+                            <option value="3">3 sao trở lên</option>
+                        </select>
+                    </div>
+
+                    <div class="search-box">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm..." id="searchInput">
+                    </div>
+
+                    <div class="view-toggle">
+                        <button class="view-btn active" onclick="toggleView('grid')">⊞</button>
+                        <button class="view-btn" onclick="toggleView('list')">☰</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div class="products-section">
+                <div class="products-header">
+                    <div class="results-count">Hiển thị 24 sản phẩm</div>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="newest">Mới nhất</option>
+                        <option value="price-low">Giá thấp đến cao</option>
+                        <option value="price-high">Giá cao đến thấp</option>
+                        <option value="rating">Đánh giá cao</option>
+                        <option value="name">Tên A-Z</option>
+                    </select>
+                </div>
+
+                <div class="products-grid" id="productsGrid">
+                    <!-- Product Cards will be generated by JavaScript -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>‹</button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">4</button>
+                    <button class="pagination-btn">5</button>
+                    <button class="pagination-btn">›</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Sample products data
+        const products = [
+            {
+                id: 1,
+                name: "Laptop Dell Inspiron 15 3000",
+                price: 12990000,
+                rating: 4.5,
+                reviews: 128,
+                supplier: "Dell Vietnam",
+                category: "electronics",
+                image: "💻"
+            },
+            {
+                id: 2,
+                name: "iPhone 17 Pro Max 256GB",
+                price: 35990000,
+                rating: 4.8,
+                reviews: 256,
+                supplier: "Apple Store",
+                category: "electronics",
+                image: "📱"
+            },
+            {
+                id: 3,
+                name: "ROSA GAMING X3D",
+                price: 24990000,
+                rating: 4.7,
+                reviews: 189,
+                supplier: "Samsung Vietnam",
+                category: "electronics",
+                image: "💻"
+            },
+            {
+                id: 4,
+                name: "MINI PC ",
+                price: 32990000,
+                rating: 4.9,
+                reviews: 312,
+                supplier: "rosa",
+                category: "electronics",
+                image: "💻"
+            },
+            {
+                id: 5,
+                name: "Áo hoodie ",
+                price: 299000,
+                rating: 4.3,
+                reviews: 89,
+                supplier: "Fashion Store",
+                category: "fashion",
+                image: "👕"
+            },
+            {
+                id: 6,
+                name: "Giày thể thao Nike Air Max",
+                price: 2590000,
+                rating: 4.6,
+                reviews: 156,
+                supplier: "Nike Store",
+                category: "sports",
+                image: "👟"
+            },
+            {
+                id: 7,
+                name: "Tủ lạnh Samsung 400L",
+                price: 8990000,
+                rating: 4.4,
+                reviews: 78,
+                supplier: "Samsung Vietnam",
+                category: "home",
+                image: "❄️"
+            },
+            {
+                id: 8,
+                name: "Máy lọc nước RO 9 cấp",
+                price: 4590000,
+                rating: 4.2,
+                reviews: 45,
+                supplier: "Home Appliance",
+                category: "home",
+                image: "💧"
+            }
+        ];
+
+        let currentView = 'grid';
+        let filteredProducts = [...products];
+
+        // Render products
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            filteredProducts.forEach(product => {
+                const productCard = createProductCard(product);
+                grid.appendChild(productCard);
+            });
+        }
+
+        // Create product card
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.onclick = () => openProductDetail(product.id);
+
+            card.innerHTML = `
+                <div class="product-image">${product.image}</div>
+                <div class="product-info">
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-price">${formatPrice(product.price)}</div>
+                    <div class="product-rating">
+                        <span class="stars">${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}</span>
+                        <span class="rating-text">(${product.rating})</span>
+                    </div>
+                    <div class="product-supplier">Nhà cung cấp: ${product.supplier}</div>
+                    <div class="product-actions">
+                        <button class="btn-add-cart" onclick="addToCart(${product.id})">Thêm vào giỏ</button>
+                        <button class="btn-wishlist" onclick="addToWishlist(${product.id})">♡</button>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        // Format price
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(price);
+        }
+
+        // Filter products
+        function filterProducts() {
+            const category = document.getElementById('categoryFilter').value;
+            const price = document.getElementById('priceFilter').value;
+            const rating = document.getElementById('ratingFilter').value;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+
+            filteredProducts = products.filter(product => {
+                const matchCategory = !category || product.category === category;
+                const matchRating = !rating || product.rating >= parseFloat(rating);
+                const matchSearch = !search || product.name.toLowerCase().includes(search);
+
+                let matchPrice = true;
+                if (price) {
+                    const [min, max] = price.split('-').map(p => p.replace('+', ''));
+                    if (max) {
+                        matchPrice = product.price >= parseInt(min) && product.price <= parseInt(max);
+                    } else {
+                        matchPrice = product.price >= parseInt(min);
+                    }
+                }
+
+                return matchCategory && matchRating && matchSearch && matchPrice;
+            });
+
+            renderProducts();
+            updateResultsCount();
+        }
+
+        // Update results count
+        function updateResultsCount() {
+            document.querySelector('.results-count').textContent =
+                `Hiển thị ${filteredProducts.length} sản phẩm`;
+        }
+
+        // Toggle view
+        function toggleView(view) {
+            currentView = view;
+            const grid = document.getElementById('productsGrid');
+
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (view === 'list') {
+                grid.style.gridTemplateColumns = '1fr';
+            } else {
+                grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
+            }
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            alert(`Đã thêm "${product.name}" vào giỏ hàng!`);
+
+            // Update cart badge
+            const badge = document.querySelector('.cart-badge');
+            badge.textContent = parseInt(badge.textContent) + 1;
+        }
+
+        // Add to wishlist
+        function addToWishlist(productId) {
+            const product = products.find(p => p.id === productId);
+            alert(`Đã thêm "${product.name}" vào danh sách yêu thích!`);
+        }
+
+        // Open product detail
+        function openProductDetail(productId) {
+            window.location.href = `product-detail.html?id=${productId}`;
+        }
+
+        // Sort products
+        function sortProducts() {
+            const sortBy = document.getElementById('sortSelect').value;
+
+            filteredProducts.sort((a, b) => {
+                switch (sortBy) {
+                    case 'price-low':
+                        return a.price - b.price;
+                    case 'price-high':
+                        return b.price - a.price;
+                    case 'rating':
+                        return b.rating - a.rating;
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    default:
+                        return b.id - a.id; // newest
+                }
+            });
+
+            renderProducts();
+        }
+
+        // Event listeners
+        document.getElementById('categoryFilter').addEventListener('change', filterProducts);
+        document.getElementById('priceFilter').addEventListener('change', filterProducts);
+        document.getElementById('ratingFilter').addEventListener('change', filterProducts);
+        document.getElementById('searchInput').addEventListener('input', filterProducts);
+        document.getElementById('sortSelect').addEventListener('change', sortProducts);
+
+        // Search functionality
+        document.querySelectorAll('.search-input').forEach(input => {
+            input.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    const searchTerm = this.value;
+                    if (searchTerm.trim()) {
+                        document.getElementById('searchInput').value = searchTerm;
+                        filterProducts();
+                    }
+                }
+            });
+        });
+
+        // Cart icon click
+        document.querySelector('.cart-icon').addEventListener('click', function () {
+            window.location.href = 'cart.html';
+        });
+
+        // Initialize
+        renderProducts();
+    </script>
+</body>
+
+</html>

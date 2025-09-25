@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>AI Chatbot - Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* Header styles */
+        .header {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .header-logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .header-nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .header-nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-search {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 20px;
+        }
+
+        .header-search-input {
+            border: none;
+            background: none;
+            outline: none;
+            margin-left: 8px;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-toggle {
+            display: none;
+        }
+
+        /* Chat container */
+        .chat-container {
+            display: flex;
+            height: calc(100vh - 70px);
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Left sidebar - Chat History */
+        .chat-history {
+            width: 280px;
+            background: white;
+            border-right: 1px solid #eee;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .chat-history.collapsed {
+            width: 45px;
+        }
+
+        .history-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+
+        .chat-history.collapsed .history-header span {
+            display: none;
+        }
+
+        .chat-history.collapsed .history-header img {
+            transform: rotate(180deg);
+        }
+
+        .chat-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f5f5f5;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .chat-history.collapsed .chat-item {
+            display: none;
+        }
+
+        .chat-item:hover {
+            background: #f8f9fa;
+        }
+
+        .chat-item.active {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+
+        .chat-time {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .chat-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .chat-status {
+            font-size: 12px;
+            color: #4caf50;
+        }
+
+        .chat-status.processing {
+            color: #ff9800;
+        }
+
+        /* Center - Chat Area */
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #f8f9fa;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.ai {
+            gap: 10px;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            line-height: 1.4;
+        }
+
+        .message.user .message-bubble {
+            background: #2196f3;
+            color: white;
+        }
+
+        .message.ai .message-bubble {
+            background: white;
+            color: #333;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Product suggestion */
+        .main-product {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            gap: 15px;
+        }
+
+        .product-image img {
+            border-radius: 8px;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .product-rating {
+            color: #ff9800;
+            margin-bottom: 5px;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .other-options {
+            text-align: center;
+            color: #2196f3;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        /* Message input */
+        .message-input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+        }
+
+        .send-button {
+            background: #2196f3;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .send-button:hover {
+            background: #1976d2;
+        }
+
+        /* Right sidebar - Product Suggestions */
+        .product-suggestions {
+            width: 300px;
+            background: white;
+            border-left: 1px solid #eee;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .product-suggestions.collapsed {
+            width: 50px;
+        }
+
+        .suggestions-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+
+        .product-suggestions.collapsed .suggestions-header span {
+            display: none;
+        }
+
+        .product-suggestions.collapsed .suggestions-header img {
+            transform: rotate(180deg);
+        }
+
+        .history-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f5f5f5;
+            display: flex;
+            gap: 15px;
+            cursor: pointer;
+        }
+
+        .product-suggestions.collapsed .history-item {
+            display: none;
+        }
+
+        .history-item:hover {
+            background: #f8f9fa;
+        }
+
+        .history-info {
+            flex: 1;
+        }
+
+        .history-product-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .history-product-price {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .history-image img {
+            border-radius: 8px;
+        }
+
+        /* Mobile styles */
+        .mobile-suggestions {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header-nav-menu {
+                display: none;
+            }
+            
+            .header-toggle {
+                display: block;
+                cursor: pointer;
+            }
+            
+            .chat-history, .product-suggestions {
+                display: none;
+            }
+            
+            .mobile-suggestions {
+                display: block;
+                background: white;
+                border-top: 1px solid #eee;
+                max-height: 200px;
+                overflow-y: auto;
+            }
+            
+            .mobile-suggestions-header {
+                padding: 15px 20px;
+                border-bottom: 1px solid #eee;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-weight: bold;
+                color: #2c3e50;
+                cursor: pointer;
+            }
+            
+            .mobile-suggestions-container {
+                padding: 10px;
+            }
+            
+            .mobile-history-item {
+                display: flex;
+                gap: 10px;
+                padding: 10px;
+                border-bottom: 1px solid #f5f5f5;
+            }
+            
+            .mobile-history-image img {
+                width: 50px;
+                height: 50px;
+                border-radius: 6px;
+            }
+            
+            .mobile-history-product-name {
+                font-weight: 500;
+                font-size: 14px;
+                margin-bottom: 3px;
+            }
+            
+            .mobile-history-product-price {
+                color: #e74c3c;
+                font-weight: bold;
+                font-size: 13px;
+                margin-bottom: 3px;
+            }
+            
+            .mobile-product-rating {
+                color: #ff9800;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-logo">
+            AI Bán Sỉ
+        </div>
+        <nav>
+            <ul class="header-nav-menu">
+                <li><a href="index.html">Sản phẩm</a></li>
+                <li><a href="chatbot.html">AI Find</a></li>
+                <li><a href="tin-tuc/template.html">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="cart.html">Đơn hàng</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="header-search">
+                <span class="header-search-icon">🔍</span>
+                <input type="text" class="header-search-input" placeholder="Tìm kiếm">
+            </div>
+            <div class="cart-icon">
+                🛒
+                <span class="cart-badge" id="cartBadge">3</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="chat-container">
+        <!-- LEFT SIDEBAR -->
+        <div class="chat-history" id="chatHistory">
+            <div class="history-header" onclick="toggleChatHistory()">
+                <span>LỊCH SỬ TRÒ CHUYỆN</span>
+                <img width="15" height="15" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1IDE4TDkgMTJMMTUgNiIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4=" alt="toggle" />
+            </div>
+            <div class="chat-item active">
+                <div class="chat-time">Hôm nay, 14:30</div>
+                <div class="chat-title">AI - Tìm kiếm ổ cứng SSD</div>
+                <div class="chat-status">Hoàn tất</div>
+            </div>
+
+            <div class="chat-item">
+                <div class="chat-time">Hôm qua, 16:45</div>
+                <div class="chat-title">Nhà cung cấp - RAM DDR4</div>
+                <div class="chat-status processing">Đang xử lý</div>
+            </div>
+
+            <div class="chat-item">
+                <div class="chat-time">2 ngày trước, 10:20</div>
+                <div class="chat-title">AI - Laptop Dell</div>
+                <div class="chat-status">Hoàn tất</div>
+            </div>
+        </div>
+
+        <!-- CENTER CHAT AREA -->
+        <div class="chat-area">
+            <div class="chat-messages">
+                <div class="message user">
+                    <div class="message-bubble">Tôi cần mua 50 ổ cứng SSD 512GB.</div>
+                </div>
+                <div class="message ai">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiM0Y2FmNTAiLz4KPHBhdGggZD0iTTEyIDZWMTJMMTYgMTQiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPg==" alt="Bot" width="25" height="25">
+                    <div class="message-bubble">
+                        Đây là 3 lựa chọn tốt nhất hiện tại cho ổ cứng SSD dung lượng 512 GB
+                    </div>
+                </div>
+
+                <div class="main-product">
+                    <div class="product-image">
+                        <img src="https://cdn.tgdd.vn/Products/Images/7699/309126/o-cung-ssd-western-digital-blue-sn570-500gb-m2-2280-pcie-30-wds500g3b0c-1.jpg" alt="SSD" width="80">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">WD Blue 3D NAND 512 GB</div>
+                        <div class="product-price">950.000₫</div>
+                        <div class="product-rating">★★★★★ (4.5)</div>
+                        <div class="product-description">Giá cả hấp dẫn</div>
+                    </div>
+                </div>
+                <div class="other-options">Xem lựa chọn khác</div>
+            </div>
+
+            <!-- MOBILE SUGGESTIONS -->
+            <div class="mobile-suggestions">
+                <div class="mobile-suggestions-header">
+                    <span>LỊCH SỬ ĐỀ XUẤT</span>
+                    <img width="15" height="15" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTkgMThMMTUgMTJMOSA2IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg==" alt="more-than" />
+                </div>
+                <div class="mobile-suggestions-container">
+                    <div class="mobile-history-item">
+                        <div class="mobile-history-image">
+                            <img src="https://pcmarket.vn/media/product/10695_cpu_intel_core_i7_14700kf_pcm_1.jpg" alt="CPU Intel">
+                        </div>
+                        <div class="mobile-history-info">
+                            <div class="mobile-history-product-name">Intel Core i5-13400</div>
+                            <div class="mobile-history-product-price">4.401.000đ</div>
+                            <div class="mobile-product-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="mobile-history-item">
+                        <div class="mobile-history-image">
+                            <img src="https://www.tncstore.vn/media/product/250-6538-cpu-amd-r5-5600-1.jpg" alt="CPU AMD">
+                        </div>
+                        <div class="mobile-history-info">
+                            <div class="mobile-history-product-name">AMD Ryzen 5 5600</div>
+                            <div class="mobile-history-product-price">4.875.000đ</div>
+                            <div class="mobile-product-rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-input-container">
+                <input type="text" id="messageInput" class="message-input" placeholder="Nhập tin nhắn..." onkeypress="handleEnter(event)">
+                <button class="send-button" onclick="sendMessage()">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIgMjFMMjMgMTJMMiAzVjEwTDE3IDEyTDIgMTRWMjFaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4=" alt="Gửi" width="20" height="20">
+                </button>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <div class="product-suggestions" id="productSuggestions">
+            <div class="suggestions-header" onclick="toggleProductSuggestions()">
+                <span>LỊCH SỬ ĐỀ XUẤT</span>
+                <img width="15" height="15" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTkgMThMMTUgMTJMOSA2IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg==" alt="toggle" />
+            </div>
+            <div class="history-item">
+                <div class="history-image">
+                    <img src="https://pcmarket.vn/media/product/10695_cpu_intel_core_i7_14700kf_pcm_1.jpg" alt="CPU Intel" width="80">
+                </div>
+                <div class="history-info">
+                    <div class="history-product-name">Intel Core i5-13400</div>
+                    <div class="history-product-price">4.401.000đ</div>
+                    <div class="product-rating">★★★★★ (4.5)</div>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <div class="history-image">
+                    <img src="https://www.tncstore.vn/media/product/250-6538-cpu-amd-r5-5600-1.jpg" alt="CPU AMD" width="80">
+                </div>
+                <div class="history-info">
+                    <div class="history-product-name">AMD Ryzen 5</div>
+                    <div class="history-product-price">4.875.000đ</div>
+                    <div class="product-rating">★★★★★ (4.5)</div>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <div class="history-image">
+                    <img src="https://cdn.tgdd.vn/Products/Images/7699/309126/o-cung-ssd-western-digital-blue-sn570-500gb-m2-2280-pcie-30-wds500g3b0c-1.jpg" alt="SSD" width="80">
+                </div>
+                <div class="history-info">
+                    <div class="history-product-name">WD Blue SSD 512GB</div>
+                    <div class="history-product-price">950.000đ</div>
+                    <div class="product-rating">★★★★☆ (4.2)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleChatHistory() {
+            const chatHistory = document.getElementById('chatHistory');
+            chatHistory.classList.toggle('collapsed');
+        }
+
+        function toggleProductSuggestions() {
+            const productSuggestions = document.getElementById('productSuggestions');
+            productSuggestions.classList.toggle('collapsed');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                // Add user message to chat
+                const chatMessages = document.querySelector('.chat-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message user';
+                messageDiv.innerHTML = `<div class="message-bubble">${message}</div>`;
+                chatMessages.appendChild(messageDiv);
+                
+                // Clear input
+                input.value = '';
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Simulate AI response (optional)
+                setTimeout(() => {
+                    const aiMessageDiv = document.createElement('div');
+                    aiMessageDiv.className = 'message ai';
+                    aiMessageDiv.innerHTML = `
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiM0Y2FmNTAiLz4KPHBhdGggZD0iTTEyIDZWMTJMMTYgMTQiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPg==" alt="Bot" width="25" height="25">
+                        <div class="message-bubble">Tôi đang tìm kiếm sản phẩm phù hợp cho bạn...</div>
+                    `;
+                    chatMessages.appendChild(aiMessageDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Click handlers for chat items
+        document.querySelectorAll('.chat-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.chat-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

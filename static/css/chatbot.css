@@ -1,0 +1,434 @@
+  .chat-container {
+      max-width: 1300px;
+      display: flex;
+      height: calc(100vh - 80px);
+      background: #fff;
+      margin: 0 auto;
+  }
+
+  .product-suggestion {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+  }
+
+  .product-item {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      transition: transform 0.2s;
+  }
+
+  .product-item:hover {
+      transform: scale(1.02);
+      background-color: #f1f1f1;
+  }
+
+  .product-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-right: 10px;
+  }
+
+  .product-details {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .product-name {
+      font-weight: bold;
+      font-size: 14px;
+  }
+
+  .product-price {
+      color: #e74c3c;
+      font-size: 13px;
+      margin-top: 2px;
+  }
+
+  .product-rating {
+      font-size: 12px;
+      color: #f1c40f;
+  }
+
+  .product-description {
+      font-size: 12px;
+      color: #555;
+      margin-top: 2px;
+  }
+
+  /* ==== LEFT SIDEBAR ==== */
+  .chat-history {
+      width: 260px;
+      padding: 1rem;
+  }
+
+  .history-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #003087;
+      margin-bottom: 1rem;
+  }
+
+  .chat-item {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 0.8rem;
+      margin-bottom: 0.8rem;
+      font-size: 15px;
+      cursor: pointer;
+  }
+
+  .chat-time {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 0.2rem;
+  }
+
+  .chat-status {
+      font-size: 0.8rem;
+  }
+
+  /* ==== CENTER CHAT ==== */
+  .chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .chat-messages {
+      flex: 0.8;
+      overflow-y: auto;
+      padding: 1.5rem;
+  }
+
+  .message {
+      margin-bottom: 1rem;
+      display: flex;
+  }
+
+  .message.user {
+      justify-content: flex-end;
+  }
+
+  .message.ai {
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 0.5rem;
+  }
+
+  .message-bubble {
+      padding: 0.8rem 1.2rem;
+      border-radius: 20px;
+      max-width: 70%;
+      font-size: 0.95rem;
+  }
+
+  .message.user .message-bubble {
+      background: #1976d2;
+      color: #fff;
+      border-bottom-right-radius: 5px;
+  }
+
+  .message.ai .message-bubble {
+      background: #f0f0f0;
+      color: #333;
+      border-bottom-left-radius: 5px;
+  }
+
+  /* Sản phẩm chính */
+  .main-product {
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      background: #fff;
+      max-width: 300px;
+  }
+
+  .product-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+  }
+
+  .product-info {
+      flex: 1;
+  }
+
+  .product-name {
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+  }
+
+  .product-price {
+      color: #0040CA;
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+  }
+
+  .product-rating {
+      font-size: 0.85rem;
+      color: #ff9800;
+      margin-bottom: 0.3rem;
+  }
+
+  .product-description {
+      font-size: 0.85rem;
+      color: #666;
+  }
+
+  .other-options {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid #003087;
+      border-radius: 20px;
+      background: #f0f8ff;
+      color: #003087;
+      display: inline-block;
+      cursor: pointer;
+  }
+
+  /* Input tin nhắn */
+  .message-input-container {
+      padding: 0.8rem 1rem;
+      display: flex;
+      gap: 0.8rem;
+  }
+
+  .message-input {
+      flex: 1;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+  }
+
+  .send-button {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 6px;
+      background: #003087;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+  }
+
+  /* ==== RIGHT SIDEBAR ==== */
+  .product-suggestions {
+      width: 260px;
+      padding: 1rem;
+  }
+
+  .suggestions-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #003087;
+      margin-bottom: 1rem;
+  }
+
+  .history-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 12px;
+  }
+
+  .history-image img {
+      border-radius: 6px;
+      max-width: 80px;
+      height: auto;
+      display: block;
+  }
+
+  .history-info {
+      flex: 1;
+  }
+
+  .history-product-name {
+      font-weight: 600;
+      margin-bottom: 6px;
+  }
+
+  .history-product-price {
+      color: #0040CA;
+      font-weight: 700;
+      margin-bottom: 4px;
+  }
+
+  /* Mobile suggestions - ẩn mặc định */
+  .mobile-suggestions {
+      display: none;
+  }
+
+  /* ===== Responsive cho điện thoại ===== */
+  @media screen and (max-width: 768px) {
+      .header-nav-menu {
+          display: none;
+      }
+
+      .header-right {
+          display: none;
+      }
+
+      .header-toggle {
+          display: block;
+      }
+
+      .chat-container {
+          flex-direction: column;
+          height: calc(100vh - 80px);
+      }
+
+      /* Ẩn sidebar trái và phải */
+      .chat-history,
+      .product-suggestions {
+          display: none;
+      }
+
+      /* Hiện phần đề xuất mobile */
+      .mobile-suggestions {
+          display: block;
+          padding: 1rem 0;
+          border-bottom: 116px solid #e0e0e0;
+          background: #f8f9fa;
+      }
+
+      .mobile-suggestions-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-weight: bold;
+          color: #003087;
+          margin-bottom: 1rem;
+          font-size: 0.9rem;
+          padding: 0 1rem;
+      }
+
+      /* Container cho scroll ngang */
+      .mobile-suggestions-container {
+          display: flex;
+          gap: 12px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          padding: 0 1rem;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+          /* Firefox */
+          -ms-overflow-style: none;
+          /* IE and Edge */
+      }
+
+      .mobile-suggestions-container::-webkit-scrollbar {
+          display: none;
+          /* Chrome, Safari and Opera */
+      }
+
+      .mobile-history-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 12px;
+          border: 1px solid #ddd;
+          border-radius: 12px;
+          background: white;
+          min-width: 140px;
+          max-width: 140px;
+          flex-shrink: 0;
+          scroll-snap-align: start;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .mobile-history-image {
+          margin-bottom: 8px;
+      }
+
+      .mobile-history-image img {
+          border-radius: 8px;
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+      }
+
+      .mobile-history-info {
+          width: 100%;
+      }
+
+      .mobile-history-product-name {
+          font-weight: 600;
+          margin-bottom: 4px;
+          font-size: 0.8rem;
+          line-height: 1.2;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+      }
+
+      .mobile-history-product-price {
+          color: #0040CA;
+          font-weight: 700;
+          margin-bottom: 4px;
+          font-size: 0.85rem;
+      }
+
+      .mobile-product-rating {
+          font-size: 0.75rem;
+          color: #ff9800;
+      }
+
+      /* Chat area cho mobile */
+      .chat-area {
+          width: 100%;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+      }
+
+      .chat-messages {
+          padding: 1rem;
+          flex: 1;
+          overflow-y: auto;
+          padding-bottom: 80px;
+          /* Để không bị che bởi input */
+      }
+
+      .main-product {
+          max-width: 100%;
+      }
+
+      .message-input-container {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: #fff;
+          border-top: 1px solid #ddd;
+          padding: 0.5rem 1rem;
+          z-index: 1000;
+      }
+  }

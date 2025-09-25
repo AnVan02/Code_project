@@ -1,0 +1,639 @@
+/* Profile Page Styles */
+
+/* Container and Layout */
+.container {
+    display: flex;
+    min-height: calc(100vh - 80px);
+    margin-top: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    background: transparent;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.sidebar-nav {
+    position: relative;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 8px;
+    background: #FAFAFA;
+    border-radius: 8px 0 0 8px;
+    border-right: 2px solid #737373;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-item.active {
+    background: #FAFAFA;
+    border-right: 2px solid #252525;
+    color: #171717;
+    font-weight: 500;
+}
+
+.nav-item:not(.active) {
+    background: transparent;
+    border-right: 2px solid transparent;
+    color: #404040;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.main-content {
+    flex: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Styles */
+.profile-section {
+    background: white;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    margin-bottom: 32px;
+    overflow: hidden;
+}
+
+.section-header {
+    padding: 24px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #171717;
+}
+
+.section-body {
+    padding: 24px;
+}
+
+/* Profile Avatar Section */
+.profile-avatar-section {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 24px;
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    background: #252525;
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.change-avatar-btn {
+    background: transparent;
+    border: 1px solid #525252;
+    border-radius: 8px;
+    color: #525252;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.change-avatar-btn:hover {
+    background: #f5f5f5;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #404040;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #D4D4D4;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    box-sizing: border-box;
+}
+
+input[readonly] {
+    background: #f9f9f9;
+    color: #171717;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 98px;
+    padding: 12px 16px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #ADAEBC;
+}
+
+/* File Upload */
+.file-upload-section {
+    margin-bottom: 24px;
+}
+
+.file-upload-area {
+    border: 2px dashed #D4D4D4;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    background: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.file-upload-area:hover {
+    border-color: #525252;
+    background: #f5f5f5;
+}
+
+.upload-icon {
+    font-size: 45px;
+    margin-bottom: 16px;
+}
+
+.file-upload-area p {
+    margin: 0 0 8px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #525252;
+    line-height: 24px;
+}
+
+.file-upload-area small {
+    color: #737373;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+/* Buttons */
+.section-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 16px;
+    border-top: 1px solid #E5E5E5;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-outline,
+.btn-link {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #252525;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #333;
+}
+
+.btn-secondary {
+    background: #525252;
+    color: white;
+    padding: 12px 48px;
+}
+
+.btn-secondary.large {
+    padding: 12px 64px;
+}
+
+.btn-secondary:hover {
+    background: #404040;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #525252;
+    color: #525252;
+    padding: 10px 32px;
+}
+
+.btn-outline:hover {
+    background: #525252;
+    color: white;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: #525252;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn-link:hover {
+    color: #252525;
+}
+
+.add-payment {
+    margin-top: 16px;
+    padding: 10px 32px;
+}
+
+/* Notifications */
+.notification-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.notification-content h3 {
+    margin: 0 0 4px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #171717;
+    line-height: 24px;
+}
+
+.notification-content p {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #737373;
+    line-height: 20px;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #E5E5E5;
+    transition: 0.3s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #28A745;
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+/* Logout All Devices */
+.logout-all {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    padding: 8px 24px;
+}
+
+/* Tables */
+.devices-table,
+.invoices-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.devices-table th,
+.devices-table td,
+.invoices-table th,
+.invoices-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.devices-table thead th,
+.invoices-table thead th {
+    background: #FAFAFA;
+    font-size: 12px;
+    font-weight: 700;
+    color: #737373;
+    text-transform: uppercase;
+}
+
+.devices-table tbody tr:hover,
+.invoices-table tbody tr:hover {
+    background: #f9f9f9;
+}
+
+.device-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.device-icon {
+    font-size: 18px;
+}
+
+.status {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    background: #F5F5F5;
+    color: #262626;
+}
+
+.status.active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status.inactive {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status.paid {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Payment Methods */
+.payment-methods {
+    margin-bottom: 40px;
+}
+
+.payment-methods h3,
+.invoice-history h3 {
+    margin: 0 0 16px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #171717;
+    line-height: 28px;
+}
+
+.payment-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #D4D4D4;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: white;
+}
+
+.card-info {
+    display: flex;
+    align-items: center;
+}
+
+.card-icon {
+    font-size: 24px;
+    margin-right: 12px;
+}
+
+.card-details div {
+    margin: 0;
+}
+
+.card-details div:first-child {
+    font-size: 16px;
+    font-weight: 400;
+    color: #171717;
+}
+
+.card-details div:last-child {
+    font-size: 14px;
+    color: #737373;
+    margin-top: 4px;
+}
+
+/* Invoice Table */
+.invoices-table td {
+    font-size: 16px;
+    color: #737373;
+}
+
+.invoices-table td:first-child {
+    font-weight: 400;
+    color: #171717;
+}
+
+.invoices-table .status {
+    font-size: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        top: 0;
+    }
+
+    .nav-item {
+        border-radius: 8px;
+        border-right: none;
+        border: 2px solid #E5E5E5;
+    }
+
+    .nav-item.active {
+        border-color: #252525;
+    }
+
+    .main-content {
+        padding: 0 16px;
+    }
+
+    .profile-avatar-section {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .section-actions {
+        justify-content: center;
+    }
+
+    .notification-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .toggle-switch {
+        align-self: flex-end;
+    }
+
+    .payment-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .devices-table,
+    .invoices-table {
+        font-size: 14px;
+    }
+
+    .devices-table th,
+    .devices-table td,
+    .invoices-table th,
+    .invoices-table td {
+        padding: 8px 12px;
+    }
+
+    .logout-all {
+        position: static;
+        width: 100%;
+        margin-top: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header {
+        padding: 16px;
+    }
+
+    .section-body {
+        padding: 16px;
+    }
+
+    input,
+    textarea {
+        font-size: 16px;
+        /* Prevent zoom on iOS */
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .section-actions {
+        flex-direction: column;
+    }
+
+    .file-upload-area {
+        padding: 24px 16px;
+    }
+}

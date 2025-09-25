@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm - AI Bán Sỉ</title>
+    <link rel="stylesheet" href="static/css/header.css">
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #1a73e8;
+            --primary-hover: #1565c0;
+            --secondary-color: #34a853;
+            --text-color: #3c4043;
+            --light-text-color: #5f6368;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --border-color: #dadce0;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        /* --- Header Styles --- */
+        .header {
+            background-color: var(--card-background);
+            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .header-nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .header-nav-menu a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-search {
+            position: relative;
+        }
+
+        .header-search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text-color);
+        }
+
+        .header-search-input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            width: 200px;
+        }
+
+        .cart-icon {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* Product Detail Page */
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-top: 1rem;
+        }
+
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 350px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .thumbnail-images {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .thumbnail.active,
+        .thumbnail:hover {
+            border-color: var(--primary-color);
+        }
+
+        .product-info h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info .sub-text {
+            color: var(--light-text-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-section {
+            background-color: #e8f0fe;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .price-text {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .price-input-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .price-input-container label {
+            white-space: nowrap;
+        }
+
+        .price-input {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .find-price-button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--card-background);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .find-price-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .result-box {
+            background-color: #e6f3e6;
+            color: var(--secondary-color);
+            border: 1px solid #c8e6c9;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .result-box h4 {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-add-to-cart {
+            background-color: var(--primary-color);
+            color: var(--card-background);
+        }
+
+        .btn-add-to-cart:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-buy-now {
+            background-color: var(--card-background);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-buy-now:hover {
+            background-color: var(--primary-color);
+            color: var(--card-background);
+        }
+
+        /* Product Tabs */
+        .product-tabs {
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .tab-headers {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tab-header {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: bold;
+            transition: border-color 0.3s;
+        }
+
+        .tab-header.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-content-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tab-content {
+            flex: 1;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tab-content ul {
+            padding-left: 1.5rem;
+        }
+
+        .tab-content p,
+        .tab-content li {
+            color: var(--light-text-color);
+        }
+
+        .product-specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .product-specs-table td {
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .product-specs-table td:first-child {
+            font-weight: bold;
+            width: 40%;
+        }
+
+        /* Related Products */
+        .related-products {
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .related-products h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .related-image {
+            width: 100%;
+            height: 150px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #ccc;
+        }
+
+        .related-info {
+            padding: 1rem;
+        }
+
+        .related-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .related-price {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .related-card .btn {
+            padding: 0.75rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            border-radius: 0;
+            color: var(--primary-color);
+            font-weight: 500;
+            background-color: var(--card-background);
+        }
+
+        .related-card .btn:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .product-detail {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-headers {
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .tab-content-container {
+                flex-direction: column;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-logo">
+            AI Bán Sỉ
+        </div>
+        <nav>
+            <ul class="header-nav-menu">
+                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="#">AI Find</a></li>
+                <li><a href="#">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="#">Đơn hàng</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="header-search">
+                <span class="header-search-icon">🔍</span>
+                <input type="text" class="header-search-input" placeholder="Tìm kiếm">
+            </div>
+            <div class="cart-icon">
+                🛒
+                <span class="cart-badge">3</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="product-detail">
+                <div class="product-images">
+                    <div class="main-image"></div>
+                    <div class="thumbnail-images">
+                        <div class="thumbnail">Ảnh 1</div>
+                        <div class="thumbnail">Ảnh 2</div>
+                        <div class="thumbnail">Ảnh 3</div>
+                        <div class="thumbnail">Ảnh 4</div>
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <h1>SSD 512GB NVMe Gen4</h1>
+                    <div class="sub-text">
+                        <p>Số lượng tối thiểu: 10</p>
+                    </div>
+
+                    <div class="price-section">
+                        <p class="price-text">Từ 950.000₫/bộ</p>
+                        <div class="price-input-container">
+                            <label for="quantity">Nhập số lượng cần mua:</label>
+                            <input type="number" id="quantity" class="price-input" value="10" min="10">
+                            <button class="find-price-button">Tìm giá tốt nhất</button>
+                        </div>
+                        <div class="result-box">
+                            <h4>Kết quả tốt nhất:</h4>
+                            <p class="price-text">Giá tốt nhất cho 50 bộ: 910.000₫/bộ</p>
+                            <p class="sub-text">Giá do hệ thống AI tự động tìm nguồn cung cấp với kết quả tốt nhất.</p>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="#" class="btn btn-add-to-cart">Thêm vào giỏ hàng</a>
+                        <a href="#" class="btn btn-buy-now">Đặt hàng ngay</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-tabs">
+                <div class="tab-headers">
+                    <div class="tab-header active">Mô tả sản phẩm</div>
+                    <div class="tab-header">Thông số kỹ thuật</div>
+                    <div class="tab-header">Chính sách bảo hành</div>
+                    <div class="tab-header">Đánh giá</div>
+                </div>
+                <div class="tab-content-container">
+                    <div class="tab-content active">
+                        <h3>Mô tả chi tiết sản phẩm</h3>
+                        <div
+                            style="background-color: #f0f0f0; height: 200px; display: flex; align-items: center; justify-content: center; color: #555;">
+                            Nội dung mô tả sản phẩm</div>
+                    </div>
+                    <div class="tab-content">
+                        <h3>Thông số cơ bản</h3>
+                        <div
+                            style="background-color: #f0f0f0; height: 200px; display: flex; align-items: center; justify-content: center; color: #555;">
+                            Bảng thông số</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="related-products">
+                <h2>Sản phẩm liên quan</h2>
+                <div class="related-grid">
+                    <div class="related-card">
+                        <div class="related-image"></div>
+                        <div class="related-info">
+                            <h4 class="related-name">SSD 256GB NVMe</h4>
+                            <p class="related-price">Từ 450.000₫</p>
+                        </div>
+                        <a href="#" class="btn">Xem chi tiết</a>
+                    </div>
+                    <div class="related-card">
+                        <div class="related-image"></div>
+                        <div class="related-info">
+                            <h4 class="related-name">SSD 1TB NVMe</h4>
+                            <p class="related-price">Từ 1.850.000₫</p>
+                        </div>
+                        <a href="#" class="btn">Xem chi tiết</a>
+                    </div>
+                    <div class="related-card">
+                        <div class="related-image"></div>
+                        <div class="related-info">
+                            <h4 class="related-name">RAM 16GB DDR4</h4>
+                            <p class="related-price">Từ 1.200.000₫</p>
+                        </div>
+                        <a href="#" class="btn">Xem chi tiết</a>
+                    </div>
+                    <div class="related-card">
+                        <div class="related-image"></div>
+                        <div class="related-info">
+                            <h4 class="related-name">HDD 2TB SATA</h4>
+                            <p class="related-price">Từ 1.450.000₫</p>
+                        </div>
+                        <a href="#" class="btn">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

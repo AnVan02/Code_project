@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- <iframe src="header.html" width="100%" height="80" style="border:none; display:block;" scrolling="no"></iframe> -->
+    <link rel="stylesheet" href="static/css/dangnhap.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <script src="static/js/dăngnhap.js"></script>
+    <title>Đăng nhập - Nền tảng AI dành riêng cho đại lý</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-logo">AI Bán Sỉ</div>
+        <nav>
+            <ul class="header-nav-menu">
+                <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+                    <img width="30" height="30" style="margin-right:360px;"
+                        src="https://img.icons8.com/ios-glyphs/30/more-than.png" alt="back--v1" />
+                </div>
+                <li><a href="index.html">Sản phẩm</a></li>
+                <li><a href="chatbot.html">AI Find</a></li>
+                <li><a href="tin-tuc/template.html">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="cart.html">Đơn hàng</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="header-search">
+                <span class="header-search-icon">🔍</span>
+                <input type="text" class="header-search-input" placeholder="Tìm kiếm">
+            </div>
+            <div class="header-cart">
+                <img src="static/image/Bag.png" alt="Giỏ hàng" width="24">
+            </div>
+        </div>
+
+        <!-- Nút menu mobile -->
+        <div class="header-toggle" onclick="document.body.classList.toggle('show-menu')">
+            <img width="30" height="30" src="https://img.icons8.com/flat-round/64/back--v1.png" alt="back--v1" />
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="main-container">
+            <div class="left-panel">
+                <h1>NỀN TẢNG AI DÀNH RIÊNG CHO ĐẠI LÝ</h1>
+                <p>Đăng nhập để bắt đầu quản lý và tìm kiếm sản phẩm.</p>
+            </div>
+
+            <div class="right-panel">
+                <div class="login-container">
+                    <div class="tab-container">
+                        <button class="tab active" onclick="switchTab('supplier')">Đăng nhập Nhà cung cấp</button>
+                        <button class="tab" onclick="switchTab('agent')">Đăng nhập Đại lý</button>
+                    </div>
+
+                    <!-- Form đăng nhập -->
+                    <div id="loginForm" class="form-container active">
+                        <form onsubmit="handleLogin(event)">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" placeholder="Nhập email của bạn" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Mật khẩu:</label>
+                                <input type="password" id="password" placeholder="Nhập mật khẩu" required>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">Chỉ nhớ đăng nhập</label>
+                                <a href="#" class="forgot-password" style="margin-left: auto;">Quên mật khẩu?</a>
+                            </div>
+                            <button type="submit" class="login-btn">Đăng nhập</button>
+                        </form>
+                        <div class="register-link">
+                            Chưa có tài khoản? <a href="#" onclick="showRegisterForm()">Đăng ký ngay</a>
+                        </div>
+                    </div>
+
+                    <!-- Form đăng ký -->
+                    <div id="registerForm" class="form-container">
+                        <form onsubmit="handleRegister(event)">
+                            <div class="form-group">
+                                <label for="companyName">Tên công ty:</label>
+                                <input type="text" id="companyName" placeholder="Nhập tên công ty" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regUsername">Tên đăng nhập:</label>
+                                <input type="text" id="regUsername" placeholder="Nhập tên đăng nhập" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regEmail">Email:</label>
+                                <input type="email" id="regEmail" placeholder="Nhập email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regPassword">Mật khẩu:</label>
+                                <input type="password" id="regPassword" placeholder="Nhập mật khẩu" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Xác nhận mật khẩu:</label>
+                                <input type="password" id="confirmPassword" placeholder="Xác nhận mật khẩu" required>
+                            </div>
+                            <button type="submit" class="login-btn">Đăng ký</button>
+                        </form>
+                        <div class="register-link">
+                            Đã có tài khoản? <a href="#" onclick="showLoginForm()">Đăng nhập ngay</a>
+                        </div>
+                    </div>
+
+                    <!-- Xác thực email -->
+                    <div id="verificationContainer" class="verification-container">
+                        <h3>Xác thực email</h3>
+                        <p>Vui lòng nhập mã xác thực đã được gửi đến email của bạn:</p>
+                        <input type="text" id="verificationCode" class="verification-code"
+                            placeholder="Nhập mã xác thực" maxlength="6">
+                        <div>
+                            <button class="back-btn" onclick="goBack()">Quay lại</button>
+                            <button class="verify-btn" onclick="verifyCode()">Xác thực</button>
+                        </div>
+                        <div id="verificationMessage"></div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+</body>
+
+</html>
